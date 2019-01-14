@@ -5,6 +5,8 @@ const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackConfig = require('./webpack.config');
 const cors = require('cors');
+const mongoose = require('mongoose');
+// const MongoStore = require('connect-mongo')(session);
 
 
 const app = express();
@@ -12,6 +14,10 @@ const app = express();
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, './server/views'));
 
+mongoose.connect('mongodb://localhost/tinyKindness', { useNewUrlParser: true }, function(err, connection) {
+  if (err) throw err;
+  else console.log('connected to mongodb');
+});
 // Path for images
 app.use('/images', express.static(path.join(__dirname, '/client/src/images')))
 
@@ -19,22 +25,20 @@ app.use('/images', express.static(path.join(__dirname, '/client/src/images')))
 // Webpack config
 if (process.env.NODE_ENV === 'development') {
   console.log('in webpack hot middleware');
-  
   const compiler = webpack(webpackConfig);
-  
   app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
     publicPath: webpackConfig.output.publicPath,
   }));
 }
-
+app.use(cors());
 
 // Essential Middleware
 app.use(bodyParser.json());
-// app.use('/api', require('./server/routers/api'));
 
 
 // Requiring routes
+app.use('/api', require('./server/routers/api'));
 app.use(require('./server/routers/index'));
 
 app.listen(8001, () => {

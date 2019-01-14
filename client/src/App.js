@@ -13,8 +13,11 @@ class App extends Component {
       <Router>
         <React.Fragment>
           <Header />
-          <LandingPage />                
-          {/* <Proposal /> */}
+         <Switch>
+           <Route path='/' exact component={LandingPage} />
+           <Route path='/help' component={Proposal} />
+           </Switch>               
+          
         </React.Fragment>
       </Router>
     );
