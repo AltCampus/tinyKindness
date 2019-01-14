@@ -1,1 +1,1 @@
-# tinyKindness
+# Tinykindness
