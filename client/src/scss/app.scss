@@ -1,7 +1,13 @@
 
 
 // Add normalizer;
-@import './normalizer.scss';
+@import './reset';
+
+// Added animate.scss
+@import './animate.scss';
+
+// Added base
+@import './base';
 
 // Import Font
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700');
@@ -18,8 +24,8 @@ a {
 }
 
 // Add auth
-@import './auth.scss';
+// @import './auth.scss';
 
-@import './Header.scss';
+@import './chunks/Header.scss';
 
-@import './Dashboard.scss'
+@import './chunks/LandingPage.scss'
