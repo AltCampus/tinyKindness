@@ -12,6 +12,9 @@ const app = express();
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, './server/views'));
 
+// Path for images
+app.use('/images', express.static(path.join(__dirname, '/client/src/images')))
+
 
 // Webpack config
 if (process.env.NODE_ENV === 'development') {
