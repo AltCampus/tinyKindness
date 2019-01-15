@@ -6,6 +6,7 @@ import Proposal from './components/Proposal';
 import LandingPage from './components/LandingPage';
 import HelperList from './components/HelperList';
 import About from './components/About';
+import Profile from './components/Profile';
 class App extends Component {
   render() {
     return (
@@ -16,6 +17,7 @@ class App extends Component {
              <Route path='/' exact component={LandingPage} />
              <Route path='/help' component={Proposal} />
              <Route path='/need' component={HelperList} />
+             <Route path='/profile' component={Profile} />
           </Switch>               
         </React.Fragment>
       </Router>

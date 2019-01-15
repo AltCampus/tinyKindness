@@ -1,0 +1,56 @@
+.profile {
+  margin: calc(100vh - 80vh) 0;
+}
+
+.profile-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1.5rem;
+  place-items: center;
+  background: #fffdf0;
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px #fff07e;
+  position: relative;
+}
+
+.user-name {
+  font-size: 3.2rem;
+  font-weight: 300;
+  margin: 1rem 0;
+}
+
+.twitter-link {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 1rem 0;
+  display: block;
+}
+
+.user-bio {
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+
+.user-mini-head {
+  font-weight: 300;
+  margin: 0.5rem 0;
+}
+
+.user-detail {
+  font-size: 1.3rem;
+}
+
+.user-mini-section {
+  margin: 1.2rem 0;
+}
+
+.edit-btn {
+  height: 40px;
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  margin: 0;
+  padding: 0;
+  width: 40px;
+  border-radius: 50%;
+}

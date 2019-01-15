@@ -28,7 +28,7 @@ class LandingPage extends Component {
             <Link to='/need' className="btn"> Click Here</Link>
           </div>
         </div>
-        <About />
+        {/* <About /> */}
       </main>
     );
   }
