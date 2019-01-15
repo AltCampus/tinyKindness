@@ -4,7 +4,7 @@ class About extends Component {
   render() {
     return (
       <div className="about-container">
-        <div className="outer open">
+        <div className={`outer ${this.props.isMore ? 'open' : ''}`}>
           <div className="about middle">
             <div className="about-modal animated bounceIn">
               <h2 className="about-header center">About tinyKindness</h2>
@@ -25,7 +25,7 @@ class About extends Component {
                   <li>3. If what they ask is quick, specific and a good fit for you, you can help them (otherwise, you can simply ignore)</li>
                 </ol>
               </div>
-              <button className="btn close-about">x</button>
+              <button className="btn close-about" onClick={() => this.props.handleMore()}>x</button>
             </div>
           </div>
         </div>

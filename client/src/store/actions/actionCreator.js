@@ -17,12 +17,13 @@ export default function postHelperDetails(data) {
   };
 }
 
-export function getHelperDetails() {
+export function getHelperDetails(cb) {
   return (dispatch) => {
     fetch(`${url}/helper`)
       .then(res => res.json())
       .then((data) => {
         dispatch({ type: 'GET_HELPER_DETAILS', data });
+        cb(true)
       });
   };
 }
