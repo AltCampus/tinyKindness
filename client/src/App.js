@@ -6,6 +6,7 @@ import Header from './components/Header';
 const Proposal = lazy(() => import('./components/Proposal'));
 const LandingPage = lazy(() => import('./components/LandingPage'));
 const HelperList = lazy(() => import('./components/HelperList'));
+const Profile = lazy(() => import('./components/Profile'));
 import Loader from './components/Loader';
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
               <Route path='/' exact component={LandingPage} />
               <Route path='/help' component={Proposal} />
               <Route path='/need' component={HelperList} />
+              <Route path='/profile' component={Profile} />
              </Suspense>
           </Switch>               
         </React.Fragment>
