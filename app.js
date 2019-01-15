@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const path = require('path');
 const bodyParser = require('body-parser');
 const webpack = require('webpack');
@@ -6,19 +7,30 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackConfig = require('./webpack.config');
 const cors = require('cors');
 const mongoose = require('mongoose');
-// const MongoStore = require('connect-mongo')(session);
+const passport = require('passport');
+const MongoStore = require('connect-mongo')(session);
 
 
 const app = express();
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, './server/views'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect('mongodb://localhost/tinyKindness', { useNewUrlParser: true }, function(err, connection) {
   if (err) throw err;
   else console.log('connected to mongodb');
 });
 
+app.use(session({
+  secret: 'toDo fullStack',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 3600000,
+  },
+  store: new MongoStore({ url: 'mongodb://localhost/toDo-fullStack-session'})
+}));
 
 // Webpack config
 if (process.env.NODE_ENV === 'development') {
@@ -29,6 +41,10 @@ if (process.env.NODE_ENV === 'development') {
     publicPath: webpackConfig.output.publicPath,
   }));
 }
+
+app.use(passport.initialize());
+app.use(passport.session());
+require('./server/modules/passport')(passport);
 app.use(cors());
 
 // Essential Middleware

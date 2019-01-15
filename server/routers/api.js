@@ -7,4 +7,6 @@ router.get('/check', (req, res) => {
 
 router.post('/helper', helperController.addHelper);
 
+router.get('/helper', helperController.displayAllHelper);
+
 module.exports = router;
