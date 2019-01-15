@@ -4,14 +4,14 @@ const User = require('../models/User');
 module.exports = (passport) => {
   passport.serializeUser((user, done) => {
     console.log('check 1');
-    done(null, user._id);
+    return done(null, user._id);
   });
   
   passport.deserializeUser((_id, done) => {
     console.log(_id,'check 2')
     User.findById(_id, (err, user) => {
       console.log('check 3');
-      done(err, user);
+      return done(err, user);
     });
   });
 
@@ -29,6 +29,7 @@ module.exports = (passport) => {
       }
       if (err) return done(err);
       if (!user) {
+        console.log(profile._id, profile.name, 'profile details');
         const newUser = new User({
           name: profile.displayName,
           userName: profile.username,

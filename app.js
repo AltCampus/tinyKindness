@@ -1,13 +1,14 @@
 const express = require('express');
-// const session = require('express-session');
+const session = require('express-session');
 const path = require('path');
 const bodyParser = require('body-parser');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const passport = require('passport');
 const mongoose = require('mongoose');
-// const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo')(session);
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 const webpackConfig = require('./webpack.config');
 
 
@@ -24,12 +25,12 @@ mongoose.connect('mongodb://localhost/tinyKindness', { useNewUrlParser: true }, 
 // Path for images
 app.use('/images', express.static(path.join(__dirname, '/client/src/images')))
 
-// app.use(session({
-//   secret: 'tinyKindness',
-//   resave: true,
-//   saveUninitialized: true,
-//   store: new MongoStore({ url: 'mongodb://localhost/tinyKindness-session' }),
-// }));
+app.use(session({
+  secret: 'tinyKindness',
+  resave: true,
+  saveUninitialized: true,
+  store: new MongoStore({ url: 'mongodb://localhost/tinyKindness-session' }),
+}));
 
 // Webpack config
 if (process.env.NODE_ENV === 'development') {
@@ -42,7 +43,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.session());
 require('./server/modules/passport')(passport);
 
 app.use(cors());
