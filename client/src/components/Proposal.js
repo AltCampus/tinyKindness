@@ -6,6 +6,7 @@ import HelperList from './HelperList';
 class Proposal extends Component {
   state = {
     name: '',
+    bio: '',
     introduction: '',
     feedback: '',
     resources: '',
@@ -31,6 +32,10 @@ class Proposal extends Component {
               <label htmlFor="first_name">Your name</label>
             </div>
             <div className="input-field col s6">
+              <input id="first_name" type="text" className="validate" name="bio" onChange={this.handleChange} />
+              <label htmlFor="first_name">Your Bio</label>
+            </div>
+            <div className="input-field col s6">
               <input id="first_name" type="text" className="validate" name="introduction" onChange={this.handleChange} />
               <label htmlFor="first_name">INTRODUCTIONS: What type of people you know professionally?</label>
             </div>
@@ -49,7 +54,6 @@ class Proposal extends Component {
           </div>
           <button type="submit" onSubmit={this.handleSubmit}>Submit</button>
         </form>
-        <HelperList />
       </div>
     );
   }

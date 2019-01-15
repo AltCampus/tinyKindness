@@ -11,10 +11,11 @@ import { getHelperDetails } from '../store/actions/actionCreator';
 
 class HelperList extends Component {
 	componentWillMount = () => {
-		// this.props.dispatch(getHelperDetails())
+		this.props.dispatch(getHelperDetails())
 	}
   render() {
 		const { helpers } = this.props;
+		console.log(helpers)
 		return (
 			<main className="helper-table">	
 				<div className="table-container wrapper">
@@ -34,150 +35,19 @@ class HelperList extends Component {
 							</thead>
 
 							<tbody>
+								{
+									helpers && helpers.map(helper => (
 								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
+									<td>{new Date(helper.createdAt).toDateString().slice(4)}</td>
+									<td>{helper.name}</td>
+									<td>{helper.bio}</td>
+									<td>{helper.feedback}</td>
+									<td>{helper.introduction}</td>
+									<td>{helper.resources}</td>
+									<td><a href={`https://twitter.com/${helper.twitterHandle}`}>{helper.twitterHandle}</a></td>
 								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
-								</tr>
-								<tr>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>Alvin</td>
-									<td>Eclair</td>
-									<td>$0.87</td>
-									<td>$0.87</td>
-								</tr>
+									))
+								}
 							</tbody>
 						</table>
 					</div>

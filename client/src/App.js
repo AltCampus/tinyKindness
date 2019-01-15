@@ -13,12 +13,12 @@ class App extends Component {
       <Router>
         <React.Fragment>
           <Header />
-          <HelperList />
-         {/* <Switch>
-           <Route path='/' exact component={LandingPage} />
-           <Route path='/help' component={Proposal} />
-           </Switch>                */}
-          
+          <Switch>
+             <Route path='/' exact component={LandingPage} />
+             <Route path='/help' component={Proposal} />
+             <Route path='/need' component={HelperList} />
+          </Switch>               
+          {/* <HelperList /> */}
         </React.Fragment>
       </Router>
     );

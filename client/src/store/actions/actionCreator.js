@@ -1,7 +1,6 @@
-const url = 'http://192.168.0.109:8001/api';
+const url = 'http://192.168.1.108:8001/api';
 
 export default function postHelperDetails(data) {
-    console.log(data)
   return (dispatch) => {
       fetch(`${url}/helper`, {
       method: 'POST',
@@ -19,12 +18,11 @@ export default function postHelperDetails(data) {
 }
 
 export function getHelperDetails() {
-    return (dispatch) => {
-        fetch(`${url}/helper`)
-        .then(res => res.json())
-        .then(data => {
-            // console.log(data)
-            dispatch({type: 'GET_HELPER_DETAILS', data})
-        })
-    }
+  return (dispatch) => {
+    fetch(`${url}/helper`)
+      .then(res => res.json())
+      .then((data) => {
+        dispatch({ type: 'GET_HELPER_DETAILS', data });
+      });
+  };
 }
