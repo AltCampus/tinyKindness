@@ -23,9 +23,6 @@ a {
   text-decoration: none;
 }
 
-// Add auth
-// @import './auth.scss';
-
 // Adding header scss
 @import './chunks/Header.scss';
 
@@ -34,3 +31,6 @@ a {
 
 // Adding HelperList
 @import './chunks/HelperList.scss';
+
+// Adding Proposal
+@import './chunks/Proposal.scss'

@@ -5,9 +5,7 @@ import Header from './components/Header';
 import Proposal from './components/Proposal';
 import LandingPage from './components/LandingPage';
 import HelperList from './components/HelperList';
-
 class App extends Component {
-
   render() {
     return (
       <Router>
@@ -18,7 +16,6 @@ class App extends Component {
              <Route path='/help' component={Proposal} />
              <Route path='/need' component={HelperList} />
           </Switch>               
-          {/* <HelperList /> */}
         </React.Fragment>
       </Router>
     );

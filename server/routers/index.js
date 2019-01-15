@@ -17,9 +17,8 @@ router.get('/callback/twitter',
     res.status(200).redirect('/');
   });
 
-module.exports = router;
 router.get('/help', (req, res) => {
   res.render('index');
-})
+});
 
 module.exports = router;
