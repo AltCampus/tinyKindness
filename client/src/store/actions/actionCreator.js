@@ -23,6 +23,7 @@ export function getHelperDetails() {
         fetch(`${url}/helper`)
         .then(res => res.json())
         .then(data => {
+            // console.log(data)
             dispatch({type: 'GET_HELPER_DETAILS', data})
         })
     }

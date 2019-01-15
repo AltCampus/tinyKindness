@@ -4,7 +4,7 @@ import './scss/app.scss';
 import Header from './components/Header';
 import Proposal from './components/Proposal';
 import LandingPage from './components/LandingPage';
-
+import HelperList from './components/HelperList';
 
 class App extends Component {
 
@@ -13,10 +13,11 @@ class App extends Component {
       <Router>
         <React.Fragment>
           <Header />
-         <Switch>
+          <HelperList />
+         {/* <Switch>
            <Route path='/' exact component={LandingPage} />
            <Route path='/help' component={Proposal} />
-           </Switch>               
+           </Switch>                */}
           
         </React.Fragment>
       </Router>
