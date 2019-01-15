@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import postHelperDetails from '../store/actions/actionCreator';
-import HelperList from './HelperList';
 
 class Proposal extends Component {
   state = {
@@ -12,47 +11,51 @@ class Proposal extends Component {
     resources: '',
     twitterHandle: ''
   }
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     })
   }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.dispatch(postHelperDetails(this.state))
     document.querySelectorAll("#first_name").value = '';
   }
+  
   render() {
     return (
-      <div className="row">
-        <form className="col s12" onSubmit={this.handleSubmit}>
+      <div className="proposal center">
+        <form className="wrapper proposal-form animated bounceIn" onSubmit={this.handleSubmit}>
+          <h2 className="proposal-head">Add Your Details</h2>
           <div className="row">
-            <div className="input-field col s6">
-              <input id="first_name" type="text" className="validate" name="name" onChange={this.handleChange} />
+            <div className="proposal-field">
               <label htmlFor="first_name">Your name</label>
+              <input className="proposal-input" id="first_name" type="text"  name="name" onChange={this.handleChange} />
             </div>
-            <div className="input-field col s6">
-              <input id="first_name" type="text" className="validate" name="bio" onChange={this.handleChange} />
-              <label htmlFor="first_name">Your Bio</label>
+            <div className="proposal-field">
+              <label htmlFor="bio">Your Bio</label>
+              <input className="proposal-input" id="first_name" type="text"  name="bio" onChange={this.handleChange} />
             </div>
-            <div className="input-field col s6">
-              <input id="first_name" type="text" className="validate" name="introduction" onChange={this.handleChange} />
+            <div className="proposal-field">
               <label htmlFor="first_name">INTRODUCTIONS: What type of people you know professionally?</label>
+              <input className="proposal-input" id="first_name" type="text"  name="introduction" onChange={this.handleChange} />
             </div>
-            <div className="input-field col s6">
-              <input id="first_name" type="text" className="validate" name="feedback" onChange={this.handleChange} />
-              <label htmlFor="first_name">FEEDBACK: What are you so good at that you can give decent feedback on within a few minutes?</label>
+            <div className="proposal-field ">
+              <label htmlFor="first_name">FEEDBACK: What are you so good?</label>
+              <input className="proposal-input" id="first_name" type="text"  name="feedback" onChange={this.handleChange} />
             </div>
-            <div className="input-field col s6">
-              <input id="first_name" type="text" className="validate" name="resources" onChange={this.handleChange} />
-              <label htmlFor="first_name">RESOURCES: What areas do you spend most of your time reading, researching, thinking such that if someone has a specific question, you can point them to a good Internet resource? </label>
+            <div className="proposal-field ">
+              <label htmlFor="first_name">RESOURCES: What areas do you spend most of your time reading, researching, thinking? </label>
+              <input className="proposal-input" id="first_name" type="text" name="resources" onChange={this.handleChange} />
             </div>
-            <div className="input-field col s6">
-              <input id="first_name" type="text" className="validate" name="twitterHandle" onChange={this.handleChange} />
+            <div className="proposal-field">
               <label htmlFor="first_name">TWITTER HANDLE</label>
+              <input className="proposal-input" id="first_name" type="text"  name="twitterHandle" onChange={this.handleChange} />
             </div>
           </div>
-          <button type="submit" onSubmit={this.handleSubmit}>Submit</button>
+          <button type="submit" onSubmit={this.handleSubmit} className="btn ">Submit</button>
         </form>
       </div>
     );
