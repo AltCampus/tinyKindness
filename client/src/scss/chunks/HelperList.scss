@@ -26,6 +26,25 @@ th {
   font-weight: 500;
 }
 
+tr {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+// User Modal
+.modal-mini-head {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.modal-user-detail {
+  font-size: 1.1rem !important;
+}
+
+.user-popup {
+  width: 500px;
+}
+
 //Scroll behaviour
 
 ::-webkit-scrollbar {

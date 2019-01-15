@@ -22,6 +22,7 @@ class Proposal extends Component {
     e.preventDefault();
     this.props.dispatch(postHelperDetails(this.state))
     document.querySelectorAll("#first_name").value = '';
+    // this.props.history.push('/need')
   }
   
   render() {

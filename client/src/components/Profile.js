@@ -9,7 +9,7 @@ class Profile extends Component {
           <div className="user-info">
             <h3 className="user-name">Ashwani</h3>
             <a href="twitter-link" className="twitter-link">@ashwanig3</a>
-            <p className="user-bio">I am FullStack Developer.</p>      
+            <p className="user-bio">I am FullStack Developer.</p> 
           </div>
           <div className="user-details">
             <div className="user-mini-section">

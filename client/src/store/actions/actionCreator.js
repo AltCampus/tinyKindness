@@ -1,4 +1,4 @@
-const url = 'http://192.168.1.108:8001/api';
+const url = 'http://192.168.0.120:8001/api';
 
 export default function postHelperDetails(data) {
   return (dispatch) => {
@@ -17,12 +17,13 @@ export default function postHelperDetails(data) {
   };
 }
 
-export function getHelperDetails() {
+export function getHelperDetails(cb) {
   return (dispatch) => {
     fetch(`${url}/helper`)
       .then(res => res.json())
       .then((data) => {
         dispatch({ type: 'GET_HELPER_DETAILS', data });
+        cb(true)
       });
   };
 }
