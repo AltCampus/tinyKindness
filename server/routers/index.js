@@ -29,6 +29,7 @@ router.get('/auth/callback/twitter',
     //   user: req.user,
     //   jwtToken: token,
     // });
+    console.log(token,"token")
     res.redirect(`/?token=${token}`);
   });
 

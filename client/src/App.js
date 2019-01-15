@@ -8,6 +8,7 @@ const Proposal = lazy(() => import('./components/Proposal'));
 const LandingPage = lazy(() => import('./components/LandingPage'));
 const HelperList = lazy(() => import('./components/HelperList'));
 import Loader from './components/Loader';
+import { loginUser } from './store/actions/actionCreator';
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +20,10 @@ class App extends Component {
     if(!localStorage.getItem('jwt')) {
       localStorage.setItem('jwt', this.jwt)
     }
+  }
+  componentWillMount = () => {
+    const jwt = localStorage.getItem("jwt")
+    this.props.dispatch(loginUser(jwt))
   }
 
   render() {

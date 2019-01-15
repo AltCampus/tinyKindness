@@ -13,12 +13,8 @@ class LandingPage extends Component {
       isMore: !this.state.isMore
     })
   }
-  componentWillMount = () => {
-    const jwt = localStorage.getItem("jwt")
-    this.props.dispatch(loginUser(jwt))
-  }
+  
   render() {
-    console.log(this.props)
     return (
       <main className="landing">
         <div className="landing-sections wrapper">
