@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Proposal from './components/Proposal';
 import LandingPage from './components/LandingPage';
 import HelperList from './components/HelperList';
+import About from './components/About';
 class App extends Component {
   render() {
     return (

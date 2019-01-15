@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import About from './About';
 
 class LandingPage extends Component {
   render() {
@@ -27,6 +28,7 @@ class LandingPage extends Component {
             <Link to='/need' className="btn"> Click Here</Link>
           </div>
         </div>
+        <About />
       </main>
     );
   }

@@ -5,7 +5,6 @@ router.get('/', (req, res) => {
   res.render('index');
 });
 
-
 router.get('/auth/twitter',
   passport.authenticate('twitter'));
 
