@@ -8,6 +8,8 @@ const HelperSchema = new mongoose.Schema({
   feedback: String,
   resources: String,
   twitterHandle: String,
+  bio: String,
+  createdAt: { type: Date },
 });
 
 const Helper = mongoose.model('Helper', HelperSchema);
