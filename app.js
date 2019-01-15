@@ -8,7 +8,6 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 const cors = require('cors');
-const jwt = require('jsonwebtoken');
 const webpackConfig = require('./webpack.config');
 
 

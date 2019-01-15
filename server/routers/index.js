@@ -29,23 +29,9 @@ router.get('/auth/callback/twitter',
     //   user: req.user,
     //   jwtToken: token,
     // });
+    console.log(token,"token")
     res.redirect(`/?token=${token}`);
   });
-
-router.get('/verify/:token', (req, res) => {
-  console.log(req.params.token, 'token in verify');
-  try {
-    const tokenDecodedData = jwt.verify(req.params.token, myJWTSecretKey);
-    return res.json({
-      error: false,
-      data: tokenDecodedData,
-    });
-  } catch (error) {
-    return res.json({
-      error: true,
-      data: error,
-    });
-  }
   
 router.get('/help', (req, res) => {
   res.render('index');
