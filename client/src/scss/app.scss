@@ -26,6 +26,11 @@ a {
 // Add auth
 // @import './auth.scss';
 
+// Adding header scss
 @import './chunks/Header.scss';
 
-@import './chunks/LandingPage.scss'
+// Adding Landing Page scss
+@import './chunks/LandingPage.scss';
+
+// Adding HelperList
+@import './chunks/HelperList.scss';

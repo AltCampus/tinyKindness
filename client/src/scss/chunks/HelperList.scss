@@ -1,0 +1,21 @@
+.helper-table {
+  height: 100%;
+  padding: 100px 0;
+  // background: url('/images/../../images/landing-bg.png') no-repeat center;
+  background-size: cover;  
+}
+
+.table-caption {
+  margin: 0;
+}
+
+.table-wrapper{
+  height: 80vh;
+  overflow: auto;
+}
+
+.table-caption {
+  text-align : center;
+  font-size: 2.5rem;
+  font-weight : 400;
+}
