@@ -78,8 +78,7 @@
   box-shadow: 2px 1px 5px 0px #c7c6c6;
   padding: 1rem;
   li {
-    font-size: 1.2rem;
-    font-weight: 300;
+    font-size: 1.1rem;
     line-height: 1.5rem;
   }
 }
@@ -91,9 +90,8 @@
 }
 
 .about-description {
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.4rem;
-  font-weight: 300;
 }
 
 .about-subheader {
@@ -114,13 +112,15 @@
   background: #f67474 !important;
 }
 
-// TODO: Remove open from .about class element 
-// for removing modal
-
 .open {
   display: block;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+}
+
+.scroll-box {
+  height: 250px;
+  overflow: scroll;
 }
