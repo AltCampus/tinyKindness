@@ -4,21 +4,13 @@ import './scss/app.scss';
 import Header from './components/Header';
 import Proposal from './components/Proposal';
 import LandingPage from './components/LandingPage';
-import HelperList from './components/HelperList';
-
 class App extends Component {
-
   render() {
     return (
       <Router>
         <React.Fragment>
           <Header />
-          <HelperList />
-         {/* <Switch>
-           <Route path='/' exact component={LandingPage} />
-           <Route path='/help' component={Proposal} />
-           </Switch>                */}
-          
+          <Proposal />          
         </React.Fragment>
       </Router>
     );
