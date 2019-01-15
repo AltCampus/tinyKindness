@@ -21,6 +21,8 @@ mongoose.connect('mongodb://localhost/tinyKindness', { useNewUrlParser: true }, 
   if (err) throw err;
   else console.log('connected to mongodb');
 });
+// Path for images
+app.use('/images', express.static(path.join(__dirname, '/client/src/images')))
 
 app.use(session({
   secret: 'toDo fullStack',

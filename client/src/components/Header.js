@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-class Header extends Component {
-  render() {
-    return (
-      <div>
-        Hello World
-       <p><a href='/auth/twitter' >login with twitter</a></p> 
+function Header() {
+  return (
+    <header>
+      <div className="wrapper">
+        <Link to="/" className="logo">tinyKindness</Link>
       </div>
-    );
-  }
+    </header>
+  );
 }
 
 export default Header;

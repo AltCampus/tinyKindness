@@ -5,6 +5,7 @@ router.get('/', (req, res) => {
   res.render('index');
 });
 
+<<<<<<< HEAD
 
 router.get('/auth/twitter',
   passport.authenticate('twitter'));
@@ -18,3 +19,10 @@ router.get('/callback/twitter',
   });
 
 module.exports = router;
+=======
+router.get('/help', (req, res) => {
+  res.render('index');
+})
+
+module.exports = router;
+>>>>>>> ecdc22423e34d6b971d09feb2286b9e2c0969f96
