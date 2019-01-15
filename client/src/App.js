@@ -1,4 +1,5 @@
 import React, { Component, lazy, Suspense } from 'react';
+import { connect } from 'react-redux';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './scss/app.scss';
 import Header from './components/Header';
@@ -9,14 +10,31 @@ const HelperList = lazy(() => import('./components/HelperList'));
 import Loader from './components/Loader';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.jwt = ''
+  }
+
+  componentDidMount = () => {
+    if(!localStorage.getItem('jwt')) {
+      localStorage.setItem('jwt', this.jwt)
+    }
+  }
+
   render() {
+    console.log(this.props)
     return (
       <Router>
         <React.Fragment>
           <Header />
           <Switch>
              <Suspense fallback={<Loader />}>
-              <Route path='/' exact component={LandingPage} />
+              <Route path='/' exact render={(props) => {
+                if(props.location.search) {
+                  this.jwt = props.location.search.slice(7)
+                }
+                return <LandingPage {...props} />
+              }} />
               <Route path='/help' component={Proposal} />
               <Route path='/need' component={HelperList} />
              </Suspense>
@@ -28,4 +46,4 @@ class App extends Component {
 }
 
 
-export default (App);
+export default connect()(App);

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import About from './About';
+import { loginUser } from '../store/actions/actionCreator';
 
 class LandingPage extends Component {
   state = {
@@ -11,7 +13,12 @@ class LandingPage extends Component {
       isMore: !this.state.isMore
     })
   }
+  componentWillMount = () => {
+    const jwt = localStorage.getItem("jwt")
+    this.props.dispatch(loginUser(jwt))
+  }
   render() {
+    console.log(this.props)
     return (
       <main className="landing">
         <div className="landing-sections wrapper">
@@ -30,7 +37,7 @@ class LandingPage extends Component {
           <div className="landing-descriptions">
             <h3 className="links-head landing-head">Interested in Helping Others</h3>
             <a className="btn clas
-            twitter-login" href='http://192.168.0.120:8001/auth/twitter'><i className="fab fa-twitter"></i> Login with Twitter</a>
+            twitter-login" href='http://localhost:8001/auth/twitter'><i className="fab fa-twitter"></i> Login with Twitter</a>
             <p className="seperator"> OR </p>
             <h3 className="links-head landing-head">Interested in Finding Help</h3>
             <Link to='/need' className="btn"> Click Here</Link>
@@ -42,4 +49,4 @@ class LandingPage extends Component {
   }
 }
 
-export default LandingPage;
+export default connect()(LandingPage);

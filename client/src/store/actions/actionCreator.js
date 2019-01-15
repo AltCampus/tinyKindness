@@ -27,3 +27,11 @@ export function getHelperDetails(cb) {
       });
   };
 }
+
+ export function loginUser(jwt) {
+  return (dispatch) => {
+    fetch(`${url}/user/${jwt}`)
+    .then(res => res.json())
+    .then(data => console.log(data))
+  }
+} 
