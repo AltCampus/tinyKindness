@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class LandingPage extends Component {
   render() {
@@ -23,7 +24,7 @@ class LandingPage extends Component {
             twitter-login"><i class="fab fa-twitter"></i> Login with Twitter</button>
             <p className="seperator"> OR </p>
             <h3 className="links-head landing-head">Interested in Finding Help</h3>
-            <button className="btn"> Click Here</button>
+            <Link to='/need' className="btn"> Click Here</Link>
           </div>
         </div>
       </main>
