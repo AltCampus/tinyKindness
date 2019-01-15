@@ -1,4 +1,4 @@
-const url = 'http://192.168.0.109:8001/api';
+const url = 'http://192.168.1.108:8001/api';
 
 export default function postHelperDetails(data) {
   return (dispatch) => {
