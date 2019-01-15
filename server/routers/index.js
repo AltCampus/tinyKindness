@@ -21,4 +21,8 @@ router.get('/help', (req, res) => {
   res.render('index');
 });
 
+router.get('/need', (req, res) => {
+  res.render('index');
+});
+
 module.exports = router;
