@@ -25,10 +25,11 @@ router.get('/auth/callback/twitter',
     const token = jwt.sign(obj, myJWTSecretKey);
     // creat JWT token - jwt.sign(req.user.id, )
     // send JWt token via res - res.send({ jwt : token})
-    res.status(200).json({
-      user: req.user,
-      jwtToken: token,
-    });
+    // res.status(200).json({
+    //   user: req.user,
+    //   jwtToken: token,
+    // });
+    res.redirect(`/?token=${token}`);
   });
 
 router.get('/verify/:token', (req, res) => {
