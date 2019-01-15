@@ -30,7 +30,7 @@ class LandingPage extends Component {
           <div className="landing-descriptions">
             <h3 className="links-head landing-head">Interested in Helping Others</h3>
             <a className="btn clas
-            twitter-login" href='http://localhost:8001/auth/twitter'><i className="fab fa-twitter"></i> Login with Twitter</a>
+            twitter-login" href='http://192.168.0.120:8001/auth/twitter'><i className="fab fa-twitter"></i> Login with Twitter</a>
             <p className="seperator"> OR </p>
             <h3 className="links-head landing-head">Interested in Finding Help</h3>
             <Link to='/need' className="btn"> Click Here</Link>

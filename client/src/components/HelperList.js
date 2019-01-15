@@ -5,9 +5,7 @@ import Loader from './Loader';
 
 // TODO 
 // 1 - Add link tage to username (Front-End)
-// 2 - Add link to twitter handle (Front-End)
-// 3 - Wrap both anchor in td 
-//   - Example <td> <Link to="path">Ashwani</Link> </td>
+
 
 
 class HelperList extends Component {
