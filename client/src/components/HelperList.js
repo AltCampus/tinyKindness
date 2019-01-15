@@ -1,20 +1,32 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getHelperDetails } from '../store/actions/actionCreator';
+import Loader from './Loader';
 
 // TODO 
 // 1 - Add link tage to username (Front-End)
 // 2 - Add link to twitter handle (Front-End)
-// 3 - Wrape both anchor in td 
+// 3 - Wrap both anchor in td 
 //   - Example <td> <Link to="path">Ashwani</Link> </td>
 
 
 class HelperList extends Component {
+	state = {
+		isLoading: false
+	}
 	componentWillMount = () => {
-		this.props.dispatch(getHelperDetails())
+		this.setState({
+			isLoading: true
+		})
+		this.props.dispatch(getHelperDetails((isSucceed) => {
+			if(isSucceed) {
+				this.setState({isLoading: false})
+			}
+		}))
 	}
   render() {
 		const { helpers } = this.props;
+		const { isLoading } = this.state;
 		console.log(helpers)
 		return (
 			<main className="helper-table">	
@@ -33,8 +45,8 @@ class HelperList extends Component {
 									<th>Tweeter Handle</th>
 								</tr>
 							</thead>
-
-							<tbody>
+							{isLoading ? <Loader /> : (
+								<tbody>
 								{
 									helpers && helpers.map(helper => (
 								<tr>
@@ -49,13 +61,14 @@ class HelperList extends Component {
 									))
 								}
 							</tbody>
+							)}
 						</table>
 					</div>
 				</div>
 			</main>
 		)
   }
-}
+}	
 
 const mapStateToProps = (state) => {
     return {

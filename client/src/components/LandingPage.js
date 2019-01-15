@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import About from './About';
 
 class LandingPage extends Component {
+  state = {
+    isMore: false
+  }
+  handleMore = () => {
+    this.setState({
+      isMore: !this.state.isMore
+    })
+  }
   render() {
     return (
       <main className="landing">
@@ -15,7 +24,7 @@ class LandingPage extends Component {
             </p>
             <p className="description-more">Let's  pay it back by helping others.</p>
             <div className="description-more">
-              <button className="btn btn-more">Know More</button>
+              <button className="btn btn-more" onClick={this.handleMore}>Know More</button>
             </div>
           </div>
           <div className="landing-descriptions">
@@ -27,6 +36,7 @@ class LandingPage extends Component {
             <Link to='/need' className="btn"> Click Here</Link>
           </div>
         </div>
+        <About isMore={this.state.isMore} handleMore={this.handleMore}/>
       </main>
     );
   }
