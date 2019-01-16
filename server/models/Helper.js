@@ -1,8 +1,8 @@
+// import modules
 const mongoose = require('mongoose');
-// const ObjectId = mongoose.Schema.Types.ObjectId;
 
+// create a HelperSchema
 const HelperSchema = new mongoose.Schema({
-  // userId: { type: ObjectId, ref: 'User' },
   name: String,
   introduction: String,
   feedback: String,
@@ -12,6 +12,8 @@ const HelperSchema = new mongoose.Schema({
   createdAt: { type: Date },
 });
 
+// create a Helper Model
 const Helper = mongoose.model('Helper', HelperSchema);
 
+// export model Helper
 module.exports = Helper;
