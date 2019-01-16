@@ -10,12 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 class SignInLink extends Component {
   dropDown = e => {
+    console.log(e.target)
     const instance =  M.Dropdown.getInstance(e.target);
+    console.log(instance)
     instance.open();
   } 
 
   handleLogout = e => {
-    // localStorage.removeItem('jwt');
+    localStorage.removeItem('jwt');
     this.props.dispatch(logOut())
   }
 
