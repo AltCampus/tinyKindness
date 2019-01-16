@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
 class SignInLink extends Component {
   dropDown = e => {
     const instance =  M.Dropdown.getInstance(e.target);
-    instance.open();
+    if(instance) {
+      instance.open();
+    }
   } 
 
   handleLogout = e => {

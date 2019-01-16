@@ -23,6 +23,8 @@ mongoose.connect('mongodb://localhost/tinyKindness', { useNewUrlParser: true }, 
   else console.log('connected to mongodb');
 });
 
+app.use(cors());
+
 // Path for images
 app.use('/images', express.static(path.join(__dirname, '/client/src/images')));
 
