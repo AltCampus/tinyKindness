@@ -1,4 +1,4 @@
-const url = 'http://192.168.0.120:8001/api';
+const url = 'http://localhost:8001/api';
 
 export default function postHelperDetails(data) {
   return (dispatch) => {
@@ -28,8 +28,18 @@ export function getHelperDetails(cb) {
   };
 }
 
-export function logOut() {
+ export function loginUser(jwt) {
+  return (dispatch) => {
+    fetch(`${url}/user/${jwt}`)
+    .then(res => res.json())
+    .then(data => {
+      dispatch({ type: 'LOGIN_USER', data})
+    })
+  }
+} 
+
+export function logoutUser() {
   return {
-    type: 'LOGOUT_SUCCESS',
-  };
+    type: 'LOGOUT_USER'
+  }
 }
