@@ -27,3 +27,9 @@ export function getHelperDetails(cb) {
       });
   };
 }
+
+export function logOut() {
+  return {
+    type: 'LOGOUT_SUCCESS',
+  };
+}
