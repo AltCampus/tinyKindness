@@ -44,7 +44,15 @@ module.exports = (passport) => {
           name: displayName,
           userName: username,
           twitterId: id,
-          date: new Date(),
+          location: profile._json.location,
+          introductionTagsId: [],
+          feedbackTagsId: [],
+          resourcesTagsId: [],
+          introductionTagsInText: [],
+          feedbackTagsInText: [],
+          resourcesTagsInText: [],
+          bio: '',
+          joinedAt: new Date(),
         });
         // save new user in mongoDB
         newUser.save((error, data) => {
