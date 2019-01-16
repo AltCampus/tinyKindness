@@ -1,14 +1,15 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './scss/app.scss';
 import Header from './components/Header';
 
 const Proposal = lazy(() => import('./components/Proposal'));
 const LandingPage = lazy(() => import('./components/LandingPage'));
 const HelperList = lazy(() => import('./components/HelperList'));
+const Profile = lazy(() => import('./components/Profile'));
 import Loader from './components/Loader';
-import { loginUser } from './store/actions/actionCreator';
+import { loginUser, getHelperDetails } from './store/actions/actionCreator';
 
 class App extends Component {
   constructor(props) {
@@ -24,28 +25,30 @@ class App extends Component {
   componentWillMount = () => {
     const jwt = localStorage.getItem("jwt")
     this.props.dispatch(loginUser(jwt))
+    this.props.dispatch(getHelperDetails((succeed) => {succeed ? console.log(true) : ""}))
   }
 
   render() {
     console.log(this.props)
     return (
-      <Router>
-        <React.Fragment>
-          <Header />
+      <BrowserRouter>
+        <div>
+        <Header jwt={this.jwt} />
           <Switch>
              <Suspense fallback={<Loader />}>
               <Route path='/' exact render={(props) => {
                 if(props.location.search) {
                   this.jwt = props.location.search.slice(7)
                 }
-                return <LandingPage {...props} />
+                return <LandingPage/>
               }} />
               <Route path='/help' component={Proposal} />
               <Route path='/need' component={HelperList} />
+              <Route path='/profile' component={Profile} />
              </Suspense>
           </Switch>               
-        </React.Fragment>
-      </Router>
+        </div>
+      </BrowserRouter>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import postHelperDetails from '../store/actions/actionCreator';
+import { Redirect } from 'react-router-dom';
+import postHelperDetails, { loginUser } from '../store/actions/actionCreator';
 
 class Proposal extends Component {
   state = {
@@ -22,10 +23,15 @@ class Proposal extends Component {
     e.preventDefault();
     this.props.dispatch(postHelperDetails(this.state))
     document.querySelectorAll("#first_name").value = '';
-    this.props.history.push('/need')
+    // this.props.history.push('/need')
+  }
+  componentWillMount = () => {
+    const jwt = localStorage.getItem("jwt")
+    this.props.dispatch(loginUser(jwt))
   }
   
   render() {
+    if(!this.props.userLogin.userName) return <Redirect to='/' />
     return (
       <div className="proposal center">
         <form className="wrapper proposal-form animated bounceIn" onSubmit={this.handleSubmit}>
@@ -63,4 +69,10 @@ class Proposal extends Component {
   }
 }
 
-export default connect()(Proposal);
+const mapStateToProps = (state) => {
+  return {
+      userLogin: state.loginUser
+  }
+}
+
+export default connect(mapStateToProps)(Proposal);

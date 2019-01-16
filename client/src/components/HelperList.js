@@ -1,20 +1,27 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getHelperDetails } from '../store/actions/actionCreator';
 import Loader from './Loader';
+import HelperModal from './HelperModal';
+
 
 // TODO 
 // 1 - Add link tage to username (Front-End)
 
 
+// Slice longer description (front-end)
 
 class HelperList extends Component {
 	state = {
-		isLoading: false
+		isLoading: false,
+		isUserModalOpen : false,
+		currentUser : null
 	}
 	componentWillMount = () => {
 		this.setState({
-			isLoading: true
+			isLoading: true,
+
 		})
 		this.props.dispatch(getHelperDetails((isSucceed) => {
 			if(isSucceed) {
@@ -22,10 +29,17 @@ class HelperList extends Component {
 			}
 		}))
 	}
+
+	handleUserModalOpen = e => {
+		this.setState({
+			isUserModalOpen: !this.state.isUserModalOpen,
+			currentUser: this.state.isUserModalOpen ? null : this.props.helpers[e.target.parentElement.id] 
+		})
+	}
+
   render() {
 		const { helpers } = this.props;
 		const { isLoading } = this.state;
-		console.log(helpers)
 		return (
 			<main className="helper-table">	
 				<div className="table-container wrapper">
@@ -46,15 +60,15 @@ class HelperList extends Component {
 							{isLoading ? <Loader /> : (
 								<tbody>
 								{
-									helpers && helpers.map(helper => (
-								<tr>
+									helpers && helpers.map((helper, i) => (
+								<tr onClick={this.handleUserModalOpen} id={i}>
 									<td>{new Date(helper.createdAt).toDateString().slice(4)}</td>
 									<td>{helper.name}</td>
 									<td>{helper.bio}</td>
 									<td>{helper.feedback}</td>
 									<td>{helper.introduction}</td>
 									<td>{helper.resources}</td>
-									<td><a href={`https://twitter.com/${helper.twitterHandle}`}>{helper.twitterHandle}</a></td>
+									<td><a href={`https://twitter.com/${helper.twitterHandle}`}>@{helper.twitterHandle}</a></td>
 								</tr>
 									))
 								}
@@ -63,6 +77,7 @@ class HelperList extends Component {
 						</table>
 					</div>
 				</div>
+				<HelperModal isModalOpen={this.state.isUserModalOpen} user={this.state.currentUser} handleOpenModal={this.handleUserModalOpen}/>
 			</main>
 		)
   }
