@@ -1,3 +1,4 @@
+// import modules
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
@@ -10,20 +11,22 @@ const MongoStore = require('connect-mongo')(session);
 const cors = require('cors');
 const webpackConfig = require('./webpack.config');
 
-
 const app = express();
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, './server/views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// connect to mongoDB
 mongoose.connect('mongodb://localhost/tinyKindness', { useNewUrlParser: true }, (err) => {
   if (err) throw err;
   else console.log('connected to mongodb');
 });
-// Path for images
-app.use('/images', express.static(path.join(__dirname, '/client/src/images')))
 
+// Path for images
+app.use('/images', express.static(path.join(__dirname, '/client/src/images')));
+
+// initialize session
 app.use(session({
   secret: 'tinyKindness',
   resave: true,
@@ -41,10 +44,12 @@ if (process.env.NODE_ENV === 'development') {
   }));
 }
 
+// use passport as middleware
 app.use(passport.initialize());
 app.use(passport.session());
 require('./server/modules/passport')(passport);
 
+// use cors
 app.use(cors());
 
 // Essential Middleware
@@ -55,6 +60,7 @@ app.use(bodyParser.json());
 app.use('/api', require('./server/routers/api'));
 app.use(require('./server/routers/index'));
 
+// listen app on 8001 port
 app.listen(8001, () => {
   console.log('Server is running on http://localhost:8001');
 });

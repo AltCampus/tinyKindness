@@ -1,66 +1,49 @@
+// import modules
 const router = require('express').Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-
-const myJWTSecretKey = 'tinyKindness';
 
 router.get('/', (req, res) => {
   res.render('index');
 });
 
-module.exports = router;
 router.get('/help', (req, res) => {
   res.render('index');
 });
 
-router.get('/auth/twitter',
-  passport.authenticate('twitter'));
+// twitter authentication route
+router.get('/auth/twitter', passport.authenticate('twitter'));
 
+
+// twitter authentication callback route
 router.get('/auth/callback/twitter',
   passport.authenticate('twitter', { failureRedirect: '/' }),
   (req, res) => {
+    // set JWT secret Key
+    const myJWTSecretKey = 'tinyKindness';
     const { _id } = req.user;
     const obj = { id: _id };
 
+    // creat JWT token - jwt.sign(obj, )
     const token = jwt.sign(obj, myJWTSecretKey);
-    // creat JWT token - jwt.sign(req.user.id, )
-    // send JWt token via res - res.send({ jwt : token})
-    // res.status(200).json({
-    //   user: req.user,
-    //   jwtToken: token,
-    // });
-    console.log(token,"token")
+
+    // send JWt token via res - res.redirect('')
+    console.log(token, 'token');
     res.redirect(`/?token=${token}`);
   });
 
-router.get('/verify/:token', (req, res) => {
-  console.log(req.params.token, 'token in verify');
-  try {
-    const tokenDecodedData = jwt.verify(req.params.token, myJWTSecretKey);
-    return res.json({
-      error: false,
-      data: tokenDecodedData,
-    });
-  } catch (error) {
-    return res.json({
-      error: true,
-      data: error,
-    });
-  }
-});
-  
+
 router.get('/help', (req, res) => {
   res.render('index');
 });
 
 router.get('/need', (req, res) => {
   res.render('index');
-
 });
 
 router.get('/profile', (req, res) => {
   res.render('index');
 });
 
-
+// export router
 module.exports = router;

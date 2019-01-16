@@ -1,11 +1,13 @@
 const Helper = require('../models/Helper');
 
 module.exports = {
-  
-  addHelper: (req, res) => {
-    const {name, introduction, feedback, resources, twitterHandle, bio } = req.body ;
 
-    console.log(req.body, "req body in controller");
+  addHelper: (req, res) => {
+    const {
+      name, introduction, feedback, resources, twitterHandle, bio,
+    } = req.body;
+
+    console.log(req.body, 'req body in controller');
     const newHelper = new Helper({
       name,
       introduction,
@@ -15,11 +17,11 @@ module.exports = {
       bio,
       createdAt: new Date(),
     });
-    newHelper.save((err, data) => {
+    newHelper.save((err) => {
       if (err) throw err;
       else {
-        Helper.find({}, (err, data) => {
-          if (!err) res.json(data);
+        Helper.find({}, (error, data) => {
+          if (!error) res.json(data);
         });
       }
     });
