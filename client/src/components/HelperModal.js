@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class HelperModal extends Component {
   render() {
-    console.log(this.props)
     const { isModalOpen, user, handleOpenModal} = this.props;
     return (
       user ? (

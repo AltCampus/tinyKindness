@@ -28,8 +28,18 @@ export function getHelperDetails(cb) {
   };
 }
 
-export function logOut() {
+ export function loginUser(jwt) {
+  return (dispatch) => {
+    fetch(`${url}/user/${jwt}`)
+    .then(res => res.json())
+    .then(data => {
+      dispatch({ type: 'LOGIN_USER', data})
+    })
+  }
+} 
+
+export function logoutUser() {
   return {
-    type: 'LOGOUT_SUCCESS',
-  };
+    type: 'LOGOUT_USER'
+  }
 }

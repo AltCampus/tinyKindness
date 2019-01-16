@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getHelperDetails } from '../store/actions/actionCreator';
 import Loader from './Loader';
 import HelperModal from './HelperModal';
 
+
 // TODO 
+// 1 - Add link tage to username (Front-End)
+
+
 // Slice longer description (front-end)
 
 class HelperList extends Component {

@@ -28,6 +28,7 @@ module.exports = {
   },
   displayAllHelper: (req, res) => {
     Helper.find({}, (err, data) => {
+      console.log(data)
       if (!err) res.json(data);
     });
   },

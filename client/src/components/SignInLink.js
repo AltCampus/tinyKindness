@@ -17,7 +17,7 @@ class SignInLink extends Component {
   } 
 
   handleLogout = e => {
-    // localStorage.removeItem('jwt');
+    localStorage.removeItem('jwt');
     this.props.dispatch(logOut())
   }
 
