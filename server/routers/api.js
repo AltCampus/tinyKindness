@@ -10,5 +10,7 @@ router.get('/check', (req, res) => {
 // verify user by JWT token and send user data
 router.get('/user/:token', userController.verifyJWT);
 
+router.get('/users/:username', userController.userInfo);
+
 // export router
 module.exports = router;

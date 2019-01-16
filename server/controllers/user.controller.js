@@ -34,4 +34,14 @@ module.exports = {
     res.redirect(`/?token=${token}`);
   },
 
+  userInfo: (req, res) => {
+    console.log(req.params, 'params in userInfo');
+    const { username } = req.params;
+    const twitterHandle = username.split('@')[1];
+    console.log(twitterHandle, 'username');
+    User.findOne({ userName: twitterHandle }, (err, data) => {
+      if (!err) res.json(data);
+    });
+  },
+
 };
