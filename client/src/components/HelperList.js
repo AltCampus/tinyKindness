@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { getHelperDetails } from '../store/actions/actionCreator';
 import Loader from './Loader';
 import HelperModal from './HelperModal';
@@ -85,7 +85,8 @@ class HelperList extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        helpers: state.helpers
+		helpers: state.helpers,
+		loginUser: state.loginUser
     }
 }
 

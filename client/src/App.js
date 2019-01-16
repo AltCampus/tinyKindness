@@ -24,9 +24,10 @@ class App extends Component {
   }
   componentWillMount = () => {
     const jwt = localStorage.getItem("jwt")
-    this.props.dispatch(loginUser(jwt))
+    // this.props.dispatch(loginUser(jwt))
     this.props.dispatch(getHelperDetails((succeed) => {succeed ? console.log(true) : ""}))
   }
+
 
   render() {
     console.log(this.props)

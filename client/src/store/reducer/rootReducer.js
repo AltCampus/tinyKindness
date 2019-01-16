@@ -1,6 +1,6 @@
 const initState = {
   helpers: [],
-  loginUser: {}
+  loginUser: {},
 };
 
 export default function rootReducer(state = initState, action) {
@@ -29,6 +29,7 @@ export default function rootReducer(state = initState, action) {
         loginUser: {},
       }
     }
+    
     default: return state;
   }
 }

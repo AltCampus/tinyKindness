@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { getHelperDetails } from '../store/actions/actionCreator';
 
 
@@ -8,17 +9,19 @@ class Profile extends Component {
     userProfile: {}
   }
   componentWillMount = () => {
-    const username = this.props.loginUser.userName;
-    this.props.helpers.filter(helper => {
-      if(helper.twitterHandle === username) {
-        this.setState({
-          userProfile: helper
-        })
-      }
-    })
+    // const username = this.props.loginUser.userName;
+    // this.props.helpers.filter(helper => {
+    //   if(helper.twitterHandle === username) {
+    //     this.setState({
+    //       userProfile: helper
+    //     })
+    //   }
+    // })
   }
   render() {
     const { userProfile } = this.state;
+    const { loginUser } = this.props;
+    if(!loginUser.userName) return <Redirect to='/' />
     return (
       <main className="profile">
         <div className="profile-wrapper wrapper">

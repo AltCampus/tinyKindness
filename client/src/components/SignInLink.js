@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
-import { logOut } from '../store/actions/actionCreator';
+import { connect } from 'react-redux';
+import { logoutUser } from '../store/actions/actionCreator';
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -18,7 +20,7 @@ class SignInLink extends Component {
 
   handleLogout = e => {
     localStorage.removeItem('jwt');
-    this.props.dispatch(logOut())
+    this.props.dispatch(logoutUser())
   }
 
   render() {
@@ -28,11 +30,11 @@ class SignInLink extends Component {
         <ul id='dropdown1' className='dropdown-content'>
           <li><Link to="/profile">Profile</Link></li>
           <li><Link to="/need">List</Link></li>
-          <li><a href="#!" onClick={this.handleLogout}>Logout</a></li>
+          <li><button onClick={this.handleLogout}>Logout</button></li>
         </ul>
       </div>
     );
   }
 }
 
-export default SignInLink;
+export default connect()(SignInLink);
