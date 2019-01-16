@@ -24,11 +24,12 @@ class SignInLink extends Component {
   }
 
   render() {
+    const { loginUser } = this.props;
     return (
       <div className="auth-links">
         <a className='dropdown-trigger btn drop-btn' href='#' data-target='dropdown1' onClick={this.dropDown}>Praveen <i className="fas fa-sort-down"></i></a>
         <ul id='dropdown1' className='dropdown-content'>
-          <li><Link to="/profile">Profile</Link></li>
+          <li><Link to={`/@${loginUser.userName}`}>Profile</Link></li>
           <li><Link to="/need">List</Link></li>
           <li><button onClick={this.handleLogout}>Logout</button></li>
         </ul>
@@ -37,4 +38,10 @@ class SignInLink extends Component {
   }
 }
 
-export default connect()(SignInLink);
+
+const mapStateToProps = (state) => {
+  return {
+    loginUser: state.loginUser
+  }
+}
+export default connect(mapStateToProps)(SignInLink);

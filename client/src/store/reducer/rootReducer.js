@@ -1,6 +1,7 @@
 const initState = {
   helpers: [],
   loginUser: {},
+  currentUserData: {}
 };
 
 export default function rootReducer(state = initState, action) {
@@ -27,6 +28,12 @@ export default function rootReducer(state = initState, action) {
       return {
         ...state,
         loginUser: {},
+      }
+    }
+    case 'USER_DETAILS': {
+      return {
+        ...state,
+        currentUserData: action.data
       }
     }
     

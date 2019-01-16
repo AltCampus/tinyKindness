@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { getHelperDetails } from '../store/actions/actionCreator';
+import { getHelperDetails, userDetails } from '../store/actions/actionCreator';
 
 
 class Profile extends Component {
@@ -9,14 +9,7 @@ class Profile extends Component {
     userProfile: {}
   }
   componentWillMount = () => {
-    // const username = this.props.loginUser.userName;
-    // this.props.helpers.filter(helper => {
-    //   if(helper.twitterHandle === username) {
-    //     this.setState({
-    //       userProfile: helper
-    //     })
-    //   }
-    // })
+   this.props.dispatch(userDetails(this.props.loginUser.userName))
   }
   render() {
     const { userProfile } = this.state;

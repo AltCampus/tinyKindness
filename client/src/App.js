@@ -45,7 +45,7 @@ class App extends Component {
               }} />
               <Route path='/help' component={Proposal} />
               <Route path='/need' component={HelperList} />
-              <Route path='/profile' component={Profile} />
+              <Route path='/:username' component={Profile} />
              </Suspense>
           </Switch>               
         </div>
