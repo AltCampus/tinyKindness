@@ -1,11 +1,11 @@
 // Responsive SCSS for landing page
-@media only screen and (max-width : 420px) {
+@media only screen and (max-width : 480px) {
   .logo {
     text-align:  center;
     margin: 0.25rem 0;
   }
+  grid-template-columns: 100%;
   .header-wrapper {
-    grid-template-columns: 100%;
   }
   
   .landing-sections {
@@ -20,6 +20,10 @@
 
   .about-modal {
     width: 300px;
+  }
+
+  .proposal-form {
+    width: 350px !important;
   }
 }
 
@@ -47,7 +51,7 @@
   }
 }
 
-@media only screen and (min-width:421px) and  (max-width : 800px) {
+@media only screen and (min-width:481px) and  (max-width : 800px) {
   .logo{
     justify-self: center;
   }
@@ -60,6 +64,10 @@
 
   .about-modal {
     width: 100%;
+  }
+
+  .proposal-form {
+    width: 475px !important;
   }
 }
 
