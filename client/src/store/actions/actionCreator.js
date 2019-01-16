@@ -43,3 +43,14 @@ export function logoutUser() {
     type: 'LOGOUT_USER'
   }
 }
+
+export function userDetails(username) {
+  return dispatch => {
+    fetch(`${url}/@${username}`)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      dispatch({type: 'USER_DETAILS', data})
+    })
+  }
+}
