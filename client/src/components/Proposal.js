@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import postHelperDetails, { loginUser, getAllIntroctionTags } from '../store/actions/actionCreator';
+import postHelperDetails, { loginUser, getAllIntroctionTags, getFeedbackTags, getResourcesTags, findIntroTags, findResourcesTags, findFeedbackTags } from '../store/actions/actionCreator';
+
 
 class Proposal extends Component {
   state = {
@@ -20,8 +21,23 @@ class Proposal extends Component {
   }
 
   handleIntroduction = (e) => {
+    this.props.dispatch(findIntroTags(e.target.value))
     this.setState({
       introduction: e.target.value
+    })
+  }
+
+  handleResources = (e) => {
+    this.props.dispatch(findResourcesTags(e.target.value))
+    this.setState({
+      resources: e.target.value
+    })
+  }
+
+  handleFeedback = (e) => {
+    this.props.dispatch(findFeedbackTags(e.target.value))
+    this.setState({
+      feedback: e.target.value
     })
   }
 
@@ -35,6 +51,8 @@ class Proposal extends Component {
     const jwt = localStorage.getItem("jwt")
     this.props.dispatch(loginUser(jwt))
     this.props.dispatch(getAllIntroctionTags())
+    this.props.dispatch(getResourcesTags())
+    this.props.dispatch(getFeedbackTags())
   }
   
   render() {
