@@ -46,11 +46,71 @@ export function logoutUser() {
 
 export function userDetails(username) {
   return dispatch => {
-    fetch(`${url}/@${username}`)
+    fetch(`${url}/users/@${username}`)
     .then(res => res.json())
     .then(data => {
       console.log(data)
       dispatch({type: 'USER_DETAILS', data})
+    })
+  }
+}
+
+export function getAllIntroctionTags() {
+  return dispatch => {
+    fetch(`${url}/introduction-tags`)
+    .then(res => res.json())
+    .then(data => {
+      dispatch({type: 'STORE_INTROTAGS', data})
+    })
+  }
+}
+
+export function getResourcesTags() {
+  return dispatch => {
+    fetch(`${url}/resources-tags`)
+    .then(res => res.json())
+    .then(data => {
+      dispatch({type: 'STORE_RESOURCESTAGS', data})
+    })
+  }
+}
+
+export function getFeedbackTags() {
+  return dispatch => {
+    fetch(`${url}/feedback-tags`)
+    .then(res => res.json())
+    .then(data => {
+      dispatch({type: 'STORE_FEEDBACKTAGS', data})
+    })
+  }
+}
+
+export function findIntroTags(query) {
+  return dispatch => {
+    fetch(`${url}/introudction-tags/search/?query=${query}`)
+    .then(res => res.json())
+    .then(data => {
+      dispatch({type: 'SEARCH_TAGS', data})
+    })
+  }
+}
+
+export function findResourcesTags(query) {
+  return dispatch => {
+    fetch(`${url}/resources-tags/search/?query=${query}`)
+    .then(res => res.json())
+    .then(data => {
+      dispatch({type: 'SEARCH_TAGS', data})
+    })
+  }
+}
+
+export function findFeedbackTags(query) {
+  return dispatch => {
+    fetch(`${url}/feedback-tags/search/?query=${query}`)
+    .then(res => res.json())
+    .then(data => {
+      dispatch({type: 'SEARCH_TAGS', data})
     })
   }
 }

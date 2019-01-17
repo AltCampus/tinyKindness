@@ -30,7 +30,6 @@ class App extends Component {
 
 
   render() {
-    console.log(this.props)
     return (
       <BrowserRouter>
         <div>
@@ -45,7 +44,7 @@ class App extends Component {
               }} />
               <Route path='/help' component={Proposal} />
               <Route path='/need' component={HelperList} />
-              <Route path='/:username' component={Profile} />
+              <Route path='/users/:username' component={Profile} />
              </Suspense>
           </Switch>               
         </div>

@@ -8,7 +8,7 @@ class Header extends Component {
   render() {
     const { loginUser } = this.props;
     // let item;
-    // if() {
+    // if(loginUser.userName) {
     //  item = <SignInLink />
     // } else {
     //   item = <div></div>
@@ -17,7 +17,7 @@ class Header extends Component {
       <header>
         <div className="wrapper">
           <Link to="/" className="logo">tinyKindness</Link>
-          <SignInLink />
+         <SignInLink />
         </div>
       </header>
     );
