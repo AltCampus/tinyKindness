@@ -7,17 +7,19 @@ import SignInLink from './SignInLink';
 class Header extends Component {
   render() {
     const { loginUser } = this.props;
-    // let item;
-    // if() {
-    //  item = <SignInLink />
-    // } else {
-    //   item = <div></div>
-    // }
+    let item;
+    if(loginUser.userName) {
+     item = <SignInLink />
+    } else {
+      item = <div></div>
+    }
     return (
       <header>
         <div className="wrapper">
           <Link to="/" className="logo">tinyKindness</Link>
-          <SignInLink />
+          {
+            item
+          }
         </div>
       </header>
     );
