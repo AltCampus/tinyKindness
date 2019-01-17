@@ -27,7 +27,7 @@ class SignInLink extends Component {
       <div className="auth-links">
         <a className='dropdown-trigger btn drop-btn' href='#' data-target='dropdown1' onClick={this.dropDown}>Praveen <i className="fas fa-sort-down"></i></a>
         <ul id='dropdown1' className='dropdown-content'>
-          <li><Link to={`/@${loginUser.userName}`}>Profile</Link></li>
+          <li><Link to={`/users/@${loginUser.userName}`}>Profile</Link></li>
           <li><Link to="/need">List</Link></li>
           <li><button onClick={this.handleLogout}>Logout</button></li>
         </ul>

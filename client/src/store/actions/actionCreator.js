@@ -1,4 +1,4 @@
-const url = 'http://localhost:8001/api';
+const url = 'http://192.168.43.220/api';
 
 export default function postHelperDetails(data) {
   return (dispatch) => {
@@ -46,11 +46,19 @@ export function logoutUser() {
 
 export function userDetails(username) {
   return dispatch => {
-    fetch(`${url}/@${username}`)
+    fetch(`${url}/users/@${username}`)
     .then(res => res.json())
     .then(data => {
       console.log(data)
       dispatch({type: 'USER_DETAILS', data})
     })
+  }
+}
+
+export function getAllIntroctionTags() {
+  return dispatch => {
+    fetch(`${url}/introduction-tags`)
+    .then(res => res.json())
+    .then(data => console.log(data))
   }
 }

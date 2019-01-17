@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import postHelperDetails, { loginUser } from '../store/actions/actionCreator';
+import postHelperDetails, { loginUser, getAllIntroctionTags } from '../store/actions/actionCreator';
 
 class Proposal extends Component {
   state = {
@@ -19,6 +19,12 @@ class Proposal extends Component {
     })
   }
 
+  handleIntroduction = (e) => {
+    this.setState({
+      introduction: e.target.value
+    })
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.dispatch(postHelperDetails(this.state))
@@ -28,6 +34,7 @@ class Proposal extends Component {
   componentWillMount = () => {
     const jwt = localStorage.getItem("jwt")
     this.props.dispatch(loginUser(jwt))
+    this.props.dispatch(getAllIntroctionTags())
   }
   
   render() {
@@ -47,15 +54,15 @@ class Proposal extends Component {
             </div>
             <div className="proposal-field">
               <label htmlFor="first_name">INTRODUCTIONS: What type of people you know professionally?</label>
-              <input className="proposal-input" id="first_name" type="text"  name="introduction" onChange={this.handleChange} />
+              <input className="proposal-input" id="first_name" type="text"  name="introduction" onChange={this.handleIntroduction} />
             </div>
             <div className="proposal-field ">
               <label htmlFor="first_name">FEEDBACK: What are you so good?</label>
-              <input className="proposal-input" id="first_name" type="text"  name="feedback" onChange={this.handleChange} />
+              <input className="proposal-input" id="first_name" type="text"  name="feedback" onChange={this.handleFeedback} />
             </div>
             <div className="proposal-field ">
               <label htmlFor="first_name">RESOURCES: What areas do you spend most of your time reading, researching, thinking? </label>
-              <input className="proposal-input" id="first_name" type="text" name="resources" onChange={this.handleChange} />
+              <input className="proposal-input" id="first_name" type="text" name="resources" onChange={this.handleResources} />
             </div>
             <div className="proposal-field">
               <label htmlFor="first_name">TWITTER HANDLE</label>
