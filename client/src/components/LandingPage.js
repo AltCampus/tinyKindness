@@ -6,15 +6,20 @@ import { loginUser } from '../store/actions/actionCreator';
 
 class LandingPage extends Component {
   state = {
-    isMore: false
+    isMore: false,
   }
   handleMore = () => {
     this.setState({
       isMore: !this.state.isMore
     })
   }
+ 
+  componentDidMount = () => {
+    const jwt = localStorage.getItem("jwt")
+     this.props.dispatch(loginUser(jwt))
+  }
   render() {
-    if(localStorage.getItem("jwt")) {
+    if(this.props.loginUser.userName) {
       return <Redirect to='/help'/>
     } else {
 
@@ -49,4 +54,10 @@ class LandingPage extends Component {
   }
 }
 
-export default connect()(LandingPage);
+const mapStateToProps = (state) => {
+  return {
+    loginUser: state.loginUser
+  }
+}
+
+export default connect(mapStateToProps)(LandingPage);

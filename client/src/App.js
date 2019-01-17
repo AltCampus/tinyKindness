@@ -24,9 +24,10 @@ class App extends Component {
   }
   componentWillMount = () => {
     const jwt = localStorage.getItem("jwt")
-    this.props.dispatch(loginUser(jwt))
+    // this.props.dispatch(loginUser(jwt))
     this.props.dispatch(getHelperDetails((succeed) => {succeed ? console.log(true) : ""}))
   }
+
 
   render() {
     console.log(this.props)
@@ -44,7 +45,7 @@ class App extends Component {
               }} />
               <Route path='/help' component={Proposal} />
               <Route path='/need' component={HelperList} />
-              <Route path='/profile' component={Profile} />
+              <Route path='/:username' component={Profile} />
              </Suspense>
           </Switch>               
         </div>
