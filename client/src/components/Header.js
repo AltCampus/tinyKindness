@@ -15,9 +15,9 @@ class Header extends Component {
     // }
     return (
       <header>
-        <div className="wrapper">
+        <div className="wrapper header-wrapper">
           <Link to="/" className="logo">tinyKindness</Link>
-         <SignInLink />
+          {/* <SignInLink /> */}
         </div>
       </header>
     );
