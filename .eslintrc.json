@@ -2,6 +2,7 @@
   "extends": "airbnb",
   "rules": {
     "no-console": "off",
-    "consistent-return": ["error", { "treatUndefinedAsUnspecified": false }]
+    "consistent-return": ["error", { "treatUndefinedAsUnspecified": false }],
+    "no-underscore-dangle": "off"
   }
 }

@@ -5,7 +5,7 @@ class HelperModal extends Component {
     const { isModalOpen, user, handleOpenModal} = this.props;
     return (
       user ? (
-        <div className="about-container">
+        <section className="about-container">
         <div className={`outer ${isModalOpen ? 'open' : ''}`}>
           <div className="about middle">
             <div className="about-modal user-popup animated bounceIn">
@@ -34,7 +34,7 @@ class HelperModal extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </section>
       ) : ''
     );
   }

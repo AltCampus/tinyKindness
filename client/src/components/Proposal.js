@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import postHelperDetails, { loginUser } from '../store/actions/actionCreator';
+import postHelperDetails, { loginUser, getAllIntroctionTags, getFeedbackTags, getResourcesTags, findIntroTags, findResourcesTags, findFeedbackTags } from '../store/actions/actionCreator';
+import Suggestion from './Suggestion';
+import Tags from './Tags';
+
 
 class Proposal extends Component {
   state = {
@@ -19,6 +22,27 @@ class Proposal extends Component {
     })
   }
 
+  handleIntroduction = (e) => {
+    this.props.dispatch(findIntroTags(e.target.value))
+    this.setState({
+      introduction: e.target.value
+    })
+  }
+
+  handleResources = (e) => {
+    this.props.dispatch(findResourcesTags(e.target.value))
+    this.setState({
+      resources: e.target.value
+    })
+  }
+
+  handleFeedback = (e) => {
+    this.props.dispatch(findFeedbackTags(e.target.value))
+    this.setState({
+      feedback: e.target.value
+    })
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.dispatch(postHelperDetails(this.state))
@@ -28,6 +52,9 @@ class Proposal extends Component {
   componentWillMount = () => {
     const jwt = localStorage.getItem("jwt")
     this.props.dispatch(loginUser(jwt))
+    this.props.dispatch(getAllIntroctionTags())
+    this.props.dispatch(getResourcesTags())
+    this.props.dispatch(getFeedbackTags())
   }
   
   render() {
@@ -43,15 +70,17 @@ class Proposal extends Component {
             </div>
             <div className="proposal-field">
               <label htmlFor="first_name">INTRODUCTIONS: What type of people you know professionally?</label>
-              <input className="proposal-input" id="first_name" type="text"  name="introduction" onChange={this.handleChange} />
+              <input className="proposal-input" id="first_name" type="text"  name="introduction" onChange={this.handleIntroduction} />
+              {/* <Suggestion /> */}
+              <Tags />
             </div>
             <div className="proposal-field ">
               <label htmlFor="first_name">FEEDBACK: What are you so good?</label>
-              <input className="proposal-input" id="first_name" type="text"  name="feedback" onChange={this.handleChange} />
+              <input className="proposal-input" id="first_name" type="text"  name="feedback" onChange={this.handleFeedback} />
             </div>
             <div className="proposal-field ">
               <label htmlFor="first_name">RESOURCES: What areas do you spend most of your time reading, researching, thinking? </label>
-              <input className="proposal-input" id="first_name" type="text" name="resources" onChange={this.handleChange} />
+              <input className="proposal-input" id="first_name" type="text" name="resources" onChange={this.handleResources} />
             </div>
           </div>
           <button type="submit" onSubmit={this.handleSubmit} className="btn ">Submit</button>

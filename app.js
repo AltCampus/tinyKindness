@@ -12,6 +12,7 @@ const cors = require('cors');
 const webpackConfig = require('./webpack.config');
 
 const app = express();
+const bootStrap = require('./server/modules/bootStrap');
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, './server/views'));
@@ -20,7 +21,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // connect to mongoDB
 mongoose.connect('mongodb://localhost/tinyKindness', { useNewUrlParser: true }, (err) => {
   if (err) throw err;
-  else console.log('connected to mongodb');
+  else {
+    console.log('connected to mongodb');
+    bootStrap.init();
+  }
 });
 
 app.use(cors());

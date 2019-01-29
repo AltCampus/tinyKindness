@@ -1,6 +1,11 @@
 const initState = {
   helpers: [],
-  loginUser: {}
+  loginUser: {},
+  currentUserData: {},
+  allIntroTags: [],
+  allResourcesTags: [],
+  allFeedbackTags: [],
+  searchedTags: [],
 };
 
 export default function rootReducer(state = initState, action) {
@@ -27,6 +32,36 @@ export default function rootReducer(state = initState, action) {
       return {
         ...state,
         loginUser: {},
+      }
+    }
+    case 'USER_DETAILS': {
+      return {
+        ...state,
+        currentUserData: action.data
+      }
+    }
+    case 'STORE_INTROTAGS': {
+      return {
+        ...state,
+        allIntroTags: action.data
+      }
+    }
+    case 'STORE_RESOURCESTAGS': {
+      return {
+        ...state,
+        allResourcesTags: action.data
+      }
+    }
+    case 'STORE_FEEDBACKTAGS': {
+      return {
+        ...state,
+        allFeedbackTags: action.data
+      }
+    }
+    case 'SEARCH_TAGS': {
+      return {
+        ...state,
+        searchedTags: action.data
       }
     }
     default: return state;
