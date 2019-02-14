@@ -47,7 +47,7 @@ class Proposal extends Component {
     e.preventDefault();
     this.props.dispatch(postHelperDetails(this.state))
     document.querySelectorAll("#first_name").value = '';
-    // this.props.history.push('/need')
+    this.props.history.push('/need')
   }
   componentWillMount = () => {
     const jwt = localStorage.getItem("jwt")
@@ -58,7 +58,7 @@ class Proposal extends Component {
   }
   
   render() {
-    // if(!this.props.userLogin.userName) return <Redirect to='/' />
+    if(!this.props.userLogin.userName) return <Redirect to='/' />
     return (
       <div className="proposal center">
         <form className="wrapper proposal-form animated bounceIn" onSubmit={this.handleSubmit}>
