@@ -50,7 +50,8 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: __dirname + '/dist/bundle/',
-    publicPath: '/static/'
+    publicPath: '/static/',
+    chunkFilename: "[name].bundle.js",
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

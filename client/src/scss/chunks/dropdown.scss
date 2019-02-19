@@ -1,0 +1,36 @@
+// Suggestion List
+.suggestion-dropdown {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  background: #c3c0c0;
+}
+
+.suggestion {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0.2rem 0;
+  color: #181414;
+  border-bottom: 1px solid #ddd;
+  font-family: 'Roboto Slab';
+}
+
+// Tags
+.tag {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.2rem;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  box-shadow: 2px 2px 5px 2px #a3a3a3;  
+  button {
+    border: none;
+    background: transparent;
+  }
+}
+
+.tags {
+  text-align: left;
+}

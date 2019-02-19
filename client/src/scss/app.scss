@@ -1,7 +1,7 @@
 
 
 // Add normalizer;
-@import './reset';
+@import './reset.scss';
 
 // Added animate.scss
 @import './animate.scss';
@@ -10,7 +10,7 @@
 @import './base';
 
 // Import Font
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab:300,300i,400,400i,500,500i,700');
 
 .wrapper {
   max-width: 960px;
@@ -23,9 +23,23 @@ a {
   text-decoration: none;
 }
 
-// Add auth
-// @import './auth.scss';
-
+// Adding header scss
 @import './chunks/Header.scss';
 
-@import './chunks/LandingPage.scss'
+// Adding Landing Page scss
+@import './chunks/LandingPage.scss';
+
+// Adding HelperList
+@import './chunks/HelperList.scss';
+
+// Adding Proposal
+@import './chunks/Proposal.scss';
+
+// Adding Profile
+@import './chunks/Profile.scss';
+
+// Import Drop-down
+@import './chunks/dropdown.scss';
+
+// Importing Responsive
+@import './responsive.scss';

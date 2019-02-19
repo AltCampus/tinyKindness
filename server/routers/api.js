@@ -1,10 +1,10 @@
-const router = require('express').Router();
-const helperController = require('../controllers/helper.controller');
+// import modules
+const router = require("express").Router();
 
-router.get('/check', (req, res) => {
-  res.send('You are connected to TinyKindness');
+router.get("/check", (req, res) => {
+  res.send("You are connected to TinyKindness");
 });
 
-router.post('/helper', helperController.addHelper);
-
+// verify user by JWT token and send user data
+// export router
 module.exports = router;
