@@ -46,7 +46,7 @@ export default class LandingPage extends Component {
             <a
               className="btn clas
             twitter-login"
-              href="http://localhost:8001/auth/twitter"
+              href="http://localhost:8001/api/auth/twitter"
             >
               <i className="fab fa-twitter" /> Login with Twitter
             </a>

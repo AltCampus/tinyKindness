@@ -15,10 +15,8 @@ router.get("/user/kind", (req, res) => {
 router.get('/api/auth/twitter/callback', passport.authenticate('twitter', {session: false}), (req, res) => {
   const token = jsonwebtoken.sign({user : req.user}, 'secret');
   
-  res.redirect(`http://localhost:8001?t=${token}`);
+  res.redirect(`http://localhost:8001/api/v1/token?t=${token}`);
 });
-
-
 
 // export router
 module.exports = router;
