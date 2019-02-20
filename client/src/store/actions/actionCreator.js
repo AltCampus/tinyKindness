@@ -1,28 +1,31 @@
-const url = 'http://192.168.0.109:8001/api';
+const url = "http://localhost:8001/api/v1";
 
-export default function postHelperDetails(data) {
-  return (dispatch) => {
-      fetch(`${url}/helper`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
+export function getIntroductionTag(query) {
+  return dispatch => {
+    fetch(`${url}/introductions?q=${query}`)
       .then(res => res.json())
-      .then((data) => {
-        console.log(data);
-        dispatch({ type: 'POST_HELPER_DETAILS', data });
+      .then(data => {
+        dispatch({ type: "SEARCHED_TAGS", data });
       });
   };
 }
 
-export function getHelperDetails() {
-  return (dispatch) => {
-    fetch(`${url}/helper`)
+export function getResourceTags(query) {
+  return dispatch => {
+    fetch(`${url}/resources?q=${query}`)
       .then(res => res.json())
       .then(data => {
-        dispatch({type: 'GET_HELPER_DETAILS', data})
-        })
-    }
+        dispatch({ type: "SEARCHED_TAGS", data });
+      });
+  };
+}
+
+export function getFeedbackTags(query) {
+  return dispatch => {
+    fetch(`${url}/feedback?q=${query}`)
+      .then(res => res.json())
+      .then(data => {
+        dispatch({ type: "SEARCHED_TAGS", data });
+      });
+  };
 }
