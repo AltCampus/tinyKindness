@@ -11,7 +11,6 @@ module.exports = (passport) => {
   function(token, tokenSecret, profile, done) {
     
     const username = profile._json.screen_name;
-    console.log(username)
     User.findOne({ username }, (err, user) => {
       if (user === null) {
         const newUser = new User({
