@@ -33,23 +33,22 @@ export default class LandingPage extends Component {
             </div>
           </div>
           <div className="landing-descriptions">
-            <h3 className="links-head landing-head">
-              Interested in Helping Others
-            </h3>
+            <h3 className="links-head landing-head">Getting Started</h3>
+            <a
+              className="btn clas
+            twitter-login"
+              href="http://localhost:8001/auth/twitter"
+            >
+              <i className="fab fa-twitter" /> Signup with Twitter
+            </a>
+            <p className="seperator"> OR </p>
+            <h3 className="links-head landing-head">Already have account?</h3>
             <a
               className="btn clas
             twitter-login"
               href="http://localhost:8001/auth/twitter"
             >
               <i className="fab fa-twitter" /> Login with Twitter
-            </a>
-            <p className="seperator"> OR </p>
-            <h3 className="links-head landing-head">
-              Interested in Finding Help
-            </h3>
-            <a href="#" className="btn">
-              {" "}
-              Click Here
             </a>
           </div>
         </div>
