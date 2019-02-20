@@ -3,7 +3,12 @@ const express = require("express");
 const session = require("express-session");
 const path = require("path");
 const bodyParser = require("body-parser");
+<<<<<<< HEAD
+const socket = require('socket.io');
+
+=======
 const passport= require('passport');
+>>>>>>> 067ba1827b0ce6adf4127c07bf1e8b7b039b8a2b
 const webpack = require("webpack");
 const webpackDevMiddleware = require("webpack-dev-middleware");
 const mongoose = require("mongoose");
@@ -74,6 +79,17 @@ app.use("/api", require("./server/routers/api"));
 app.use(require("./server/routers/index"));
 
 // listen app on 8001 port
-app.listen(8001, () => {
+const server = app.listen(8001, () => {
   console.log("Server is running on http://localhost:8001");
+});
+
+const io = socket(server);
+
+const introductionsController = require('./server/controllers/introductionTag.controller');
+
+io.on('connection', (socket) => {
+  socket.on('introductions', (data) => {
+    introductionsController.socketIntroduction(data);
+    // socket.emit('send-introductions', {})
+  });
 });

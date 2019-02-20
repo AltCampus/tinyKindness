@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import io from 'socket.io-client';
+
+const socket = io('http://localhost:8001'); 
+
 import { connect } from "react-redux";
 import {
 	getIntroductionTag,
@@ -17,7 +21,19 @@ class KindnessForm extends Component {
 		introductionTags: [],
 		feedbackTags: [],
 		resourcesTags: []
-	};
+  };
+  
+  // do not delete refrence for socket
+  //   handleChange = (e) => {
+  //   this.setState({
+  //     [e.target.name] : e.target.value
+  //   }, () => {
+  //     socket.emit('introductions', {
+  //       value : this.state.introduction
+  //     })
+  //   })
+  // }
+
 	handleIntroductionTag = (e) => {
 		this.setState({
 			introduction: e.target.value
