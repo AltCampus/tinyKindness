@@ -1,12 +1,11 @@
 // import modules
 const router = require("express").Router();
-const IntroductionTag = require('../models/IntroductionTag');
-const FeedbackTag = require('../models/FeedbackTag');
-const ResourcesTag = require('../models/ResourcesTag');
-const userController = require('../controllers/user.controller');
+const IntroductionTag = require("../models/IntroductionTag");
+const FeedbackTag = require("../models/FeedbackTag");
+const ResourcesTag = require("../models/ResourcesTag");
+const userController = require("../controllers/user.controller");
 
-router.post("/v1/token", userController.createUser)
-
+router.post("/v1/token", userController.createUser);
 
 router.get("/check", (req, res) => {
   res.send("You are connected to TinyKindness");
@@ -17,7 +16,7 @@ router.get("/v1/introductions", (req, res) => {
     IntroductionTag.find({}, (err, data) => {
       if (!err) res.send(data);
     });
-  } else{
+  } else {
     const query = req.query.q;
     const regexp = new RegExp(query);
     IntroductionTag.find({ name: { $regex: regexp } }, (err, data) => {
