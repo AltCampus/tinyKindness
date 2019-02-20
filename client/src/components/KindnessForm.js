@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import io from 'socket.io-client';
+
+const socket = io('http://localhost:8001'); 
 
 class KindnessForm extends Component {
   state = {
@@ -9,6 +12,16 @@ class KindnessForm extends Component {
     resources: "",
     twitterHandle: ""
   };
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name] : e.target.value
+    }, () => {
+      socket.emit('introductions', {
+        value : this.state.introduction
+      })
+    })
+  }
 
   render() {
     return (
@@ -34,6 +47,7 @@ class KindnessForm extends Component {
                 id="first_name"
                 type="text"
                 name="introduction"
+                onChange={this.handleChange}
               />
             </div>
             <div className="proposal-field ">
