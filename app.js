@@ -3,6 +3,7 @@ const express = require("express");
 const session = require("express-session");
 const path = require("path");
 const bodyParser = require("body-parser");
+const passport= require('passport');
 const webpack = require("webpack");
 const webpackDevMiddleware = require("webpack-dev-middleware");
 const mongoose = require("mongoose");
@@ -56,6 +57,10 @@ if (process.env.NODE_ENV === "development") {
     })
   );
 }
+
+// Initialize passport
+app.use(passport.initialize())
+require('./server/modules/passport')(passport)
 
 // use passport as middleware
 // use cors
