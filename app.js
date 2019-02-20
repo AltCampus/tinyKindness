@@ -3,8 +3,12 @@ const express = require("express");
 const session = require("express-session");
 const path = require("path");
 const bodyParser = require("body-parser");
+<<<<<<< HEAD
 const socket = require('socket.io');
 
+=======
+const passport= require('passport');
+>>>>>>> 067ba1827b0ce6adf4127c07bf1e8b7b039b8a2b
 const webpack = require("webpack");
 const webpackDevMiddleware = require("webpack-dev-middleware");
 const mongoose = require("mongoose");
@@ -58,6 +62,10 @@ if (process.env.NODE_ENV === "development") {
     })
   );
 }
+
+// Initialize passport
+app.use(passport.initialize())
+require('./server/modules/passport')(passport)
 
 // use passport as middleware
 // use cors
