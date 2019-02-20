@@ -1,4 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import {
+  getIntroductionTag,
+  getFeedbackTags,
+  getResourceTags
+} from "../store/actions/actionCreator";
 
 class KindnessForm extends Component {
   state = {
@@ -9,7 +15,24 @@ class KindnessForm extends Component {
     resources: "",
     twitterHandle: ""
   };
-
+  handleIntroductionTag = e => {
+    this.setState({
+      introduction: e.target.value
+    });
+    this.props.dispatch(getIntroductionTag(e.target.value));
+  };
+  handleResourcesTags = e => {
+    this.setState({
+      resources: e.target.value
+    });
+    this.props.dispatch(getResourceTags(e.target.value));
+  };
+  handleFeedbackTags = e => {
+    this.setState({
+      feedback: e.target.value
+    });
+    this.props.dispatch(getFeedbackTags(e.target.value));
+  };
   render() {
     return (
       <div className="proposal center">
@@ -34,6 +57,7 @@ class KindnessForm extends Component {
                 id="first_name"
                 type="text"
                 name="introduction"
+                onChange={this.handleIntroductionTag}
               />
             </div>
             <div className="proposal-field ">
@@ -45,6 +69,7 @@ class KindnessForm extends Component {
                 id="first_name"
                 type="text"
                 name="feedback"
+                onChange={this.handleFeedbackTags}
               />
             </div>
             <div className="proposal-field ">
@@ -57,6 +82,7 @@ class KindnessForm extends Component {
                 id="first_name"
                 type="text"
                 name="resources"
+                onChange={this.handleResourcesTags}
               />
             </div>
           </div>
@@ -69,4 +95,4 @@ class KindnessForm extends Component {
   }
 }
 
-export default KindnessForm;
+export default connect()(KindnessForm);
