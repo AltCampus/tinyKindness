@@ -1,4 +1,4 @@
-@import './../vars';
+@import "./../vars";
 
 header {
   position: fixed;
@@ -16,10 +16,10 @@ header {
   font-weight: 300;
 }
 
-.header-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
+// .header-wrapper {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+// }
 
 .drop-btn {
   margin: 0 !important;
@@ -28,7 +28,7 @@ header {
 .auth-links {
   justify-self: center;
   a.drop-btn {
-    background : #ffffff17 !important,
+    background: #ffffff17 !important;
   }
 }
 
