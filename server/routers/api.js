@@ -1,10 +1,11 @@
 // import modules
 const router = require("express").Router();
-
 const IntroductionTag = require('../models/IntroductionTag');
 const FeedbackTag = require('../models/FeedbackTag');
 const ResourcesTag = require('../models/ResourcesTag');
+const userController = require('../controllers/user.controller');
 
+router.post("/v1/token", userController.createUser)
 
 
 router.get("/check", (req, res) => {
