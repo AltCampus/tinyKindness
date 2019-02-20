@@ -4,7 +4,9 @@ const router = require("express").Router();
 const introductionsController = require("../controllers/introductionTag.controller")
 const feedbackController = require("../controllers/feedbackTag.controller")
 const resourcesController = require("../controllers/resourcesTag.controller")
+const userController = require('../controllers/user.controller');
 
+router.post("/v1/token", userController.createUser)
 
 
 router.get("/check", (req, res) => {
