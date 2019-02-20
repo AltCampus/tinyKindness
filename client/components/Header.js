@@ -1,17 +1,13 @@
 import React, { Component, lazy, Suspense } from "react";
-import Header from '../components/Header'
 
-class App extends Component {
-
-
-
+class Header extends Component {
   render() {
     return (
     	<div>
-    		<Header />
+    	<h1>Hello</h1>
     	</div>
     	);
   }
 }
 
-export default App;
+export default Header;
