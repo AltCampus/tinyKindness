@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+import {connect} from 'react-redux';
+
 
 class Profile extends Component {
+
   render() {
+    const {user} = this.props;
     return (
       <main className="profile">
         <div className="profile-wrapper wrapper">
@@ -9,11 +13,10 @@ class Profile extends Component {
             <i class="fas fa-pencil-alt" />
           </button>
           <div className="user-info">
-            <h3 className="user-name">Ashwani Goswami</h3>
-            <a href="twitter-link" className="twitter-link">
-              @blah
+            <h3 className="user-name">{user.name}</h3>
+            <a href={'https://twitter.com/' + user.username} target="_blank" className="twitter-link">{user.username}
             </a>
-            <p className="user-bio">blah</p>
+            <p className="user-bio">{user.bio}</p>
           </div>
           <div className="user-details">
             <div className="user-mini-section">
@@ -35,4 +38,11 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Profile);

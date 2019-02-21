@@ -72,8 +72,7 @@ class LandingPage extends Component {
             <a
               className="btn clas
             twitter-login"
-              href="http://localhost:8001/api/v1/auth/twitter"
-            >
+              href="http://localhost:8001/api/v1/auth/twitter">
               <i className="fab fa-twitter" /> Login with Twitter
             </a>
           </div>
