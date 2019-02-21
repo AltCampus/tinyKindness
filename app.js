@@ -3,8 +3,8 @@ const express = require("express");
 const session = require("express-session");
 const path = require("path");
 const bodyParser = require("body-parser");
-const socket = require('socket.io');
-const passport= require('passport');
+const socket = require("socket.io");
+const passport = require("passport");
 const webpack = require("webpack");
 const webpackDevMiddleware = require("webpack-dev-middleware");
 const mongoose = require("mongoose");
@@ -60,8 +60,8 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // Initialize passport
-app.use(passport.initialize())
-require('./server/modules/passport')(passport)
+app.use(passport.initialize());
+require("./server/modules/passport")(passport);
 
 // use passport as middleware
 // use cors
@@ -81,10 +81,10 @@ const server = app.listen(8001, () => {
 
 const io = socket(server);
 
-const introductionsController = require('./server/controllers/introductionTag.controller');
+const introductionsController = require("./server/controllers/introductionTag.controller");
 
-io.on('connection', (socket) => {
-  socket.on('introductions', (data) => {
+io.on("connection", socket => {
+  socket.on("introductions", data => {
     introductionsController.socketIntroduction(data);
     // socket.emit('send-introductions', {})
   });

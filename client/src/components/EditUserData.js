@@ -11,6 +11,7 @@ import {
 	getResourceTags
 } from "../store/actions/actionCreator";
 
+
 class KindnessForm extends Component {
 	state = {
 
@@ -78,7 +79,7 @@ class KindnessForm extends Component {
 
 		return (
 			<div className='proposal center'>
-      <Link to={`/user/@${username}`}>Profile</Link>
+      <Link to={`/user/${username}`}>Profile</Link>
 				<form className='wrapper proposal-form animated bounceIn'>
 					<h2 className='proposal-head'>Add Your Details</h2>
 					<div className='row'>
