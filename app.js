@@ -70,7 +70,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Requiring routes
-app.use("/api", require("./server/routers/api"));
+app.use("/api/v1", require("./server/routers/api"));
 app.use(require("./server/routers/index"));
 
 // listen app on 8001 port

@@ -8,12 +8,7 @@ import {
 
 class KindnessForm extends Component {
 	state = {
-		name: "",
-		bio: "",
-		introduction: "",
-		feedback: "",
-		resources: "",
-		twitterHandle: "",
+
 		introductionTags: [],
 		feedbackTags: [],
 		resourcesTags: []
@@ -62,11 +57,34 @@ class KindnessForm extends Component {
 	};
 	render() {
 		const { introductionTags, feedbackTags, resourcesTags } = this.state;
+		const {username, name, bio} = this.props.user;
+
 		return (
 			<div className='proposal center'>
 				<form className='wrapper proposal-form animated bounceIn'>
 					<h2 className='proposal-head'>Add Your Details</h2>
 					<div className='row'>
+						<div className='proposal-field'>
+							<label htmlFor='username'>Username</label>
+							<input
+								className='proposal-input'
+								id='first_name'
+								type='text'
+								name='username'
+								value={username}
+								disabled
+							/>
+						</div>
+						<div className='proposal-field'>
+							<label htmlFor='name'>Your Name</label>
+							<input
+								className='proposal-input'
+								id='first_name'
+								type='text'
+								name='name'
+								value={name}
+							/>
+						</div>
 						<div className='proposal-field'>
 							<label htmlFor='bio'>Your Bio</label>
 							<input
@@ -74,6 +92,7 @@ class KindnessForm extends Component {
 								id='first_name'
 								type='text'
 								name='bio'
+								value={bio}
 							/>
 						</div>
 						<div className='proposal-field'>
@@ -124,12 +143,12 @@ class KindnessForm extends Component {
 								name='resources'
 								onChange={this.handleResourcesTags}
 							/>
-							<div className='suggested-tags-resources'>
+							{/* <div className='suggested-tags-resources'>
 								{resourcesTags &&
 									resourcesTags.map((tag, index) => (
 										<p key={index}>{tag.name}</p>
-									))}
-							</div>
+									))
+							</div>} */}
 						</div>
 					</div>
 					<button type='submit' className='btn '>
@@ -141,4 +160,10 @@ class KindnessForm extends Component {
 	}
 }
 
-export default connect()(KindnessForm);
+function mapStateToProps(state) {
+	return {
+		user: state.user
+	}
+}
+
+export default connect(mapStateToProps)(KindnessForm);
