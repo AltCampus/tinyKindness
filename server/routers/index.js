@@ -9,5 +9,9 @@ router.get("/user/kind", (req, res) => {
   res.render("index");
 });
 
+router.get("/user", (req, res) => {
+  res.render("index");
+});
+
 // export router
 module.exports = router;
