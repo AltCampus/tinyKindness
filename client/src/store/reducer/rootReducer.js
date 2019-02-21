@@ -1,16 +1,17 @@
+import { GET_USER_DATA } from '../actions/types';
+
 const initState = {
-  serachedTags: null
+	user: null,
 };
 
 export default function rootReducer(state = initState, action) {
-  switch (action.type) {
-    case "SEARCHED_TAGS": {
-      return {
-        ...state,
-        serachedTags: action.data
-      };
-    }
-    default:
-      return state;
-  }
+	switch (action.type) {
+		case GET_USER_DATA: {
+			return {
+				user: action.user.user,
+			};
+		}
+
+		default: return state;
+	}
 }

@@ -14,6 +14,15 @@ module.exports = {
         if (!err) res.send(data);
       });
     }
+  },
+
+  socketIntroduction: (data) =>{
+    const query = data.value
+    const regexp = new RegExp(query);
+    console.log(data)
+    // IntroductionTag.find({ name: { $regex: regexp } }, (err, data) => {
+    //   if (!err) console.log(data);
+    // });
   }
 
 }

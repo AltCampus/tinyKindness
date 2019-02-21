@@ -1,21 +1,25 @@
-// import modules
-const router = require("express").Router();
-const introductionsController = require("../controllers/introductionTag.controller");
-const feedbackController = require("../controllers/feedbackTag.controller");
-const resourcesController = require("../controllers/resourcesTag.controller");
-const userController = require("../controllers/user.controller");
+const passport = require('passport');
+const router = require('express').Router();
+const auth = require('./../modules/auth');
 
-router.get("/check", (req, res) => {
-  res.send("You are connected to TinyKindness");
+const introductionsController = require('../controllers/introductionTag.controller');
+const feedbackController = require('../controllers/feedbackTag.controller');
+const resourcesController = require('../controllers/resourcesTag.controller');
+const userController = require('../controllers/user.controller');
+
+router.get('/check', (req, res) => {
+  res.send('You are connected to TinyKindness');
 });
 
-router.post("/v1/token", userController.createUser);
-router.get("/v1/introductions", introductionsController.introductions);
+router.get('/introductions', introductionsController.introductions);	
 
-router.get("/v1/feedback", feedbackController.feedbacks);
+router.get('/feedback', feedbackController.feedbacks);	
 
-router.get("/v1/resources", resourcesController.resources);
+router.get('/resources', resourcesController.resources);
 
-// verify user by JWT token and send user data
+router.get('/auth/twitter', passport.authenticate('twitter', {session: false}));
+
+router.get('/user', auth.isLoggedIn, userController.sendUserData);
+
 // export router
 module.exports = router;
