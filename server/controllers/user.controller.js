@@ -1,19 +1,19 @@
-const passport = require("passport");
-const User = require("../models/User");
+const jsonwebtoken = require('jsonwebtoken');
+const User = require('../models/User');
+
 
 module.exports = {
-  createUser: (req, res) => {
-    User.find({ username: req.body.username }, (err, user) => {
-      if (!user.length) {
-        var newUser = new User(req.body);
-        newUser.save((err, user) => {
-          if (err) throw err;
-          res.json({ user });
+  sendUserData(req, res) {
+    const token = req.headers.authorization;
+    jsonwebtoken.verify(token, 'secret', (err, decoded) => {
+      if (decoded.user) {
+        const { _id } = decoded.user;
+        User.findOne({ _id }, (e, user) => {
+          res.json({
+            user,
+          });
         });
-      } else
-        res.json({
-          msg: "User already exist"
-        });
+      }
     });
-  }
+  },
 };
