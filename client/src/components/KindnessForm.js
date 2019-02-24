@@ -10,9 +10,32 @@ class KindnessForm extends Component {
 	state = {
 		introduction: [],
 		feedback: [],
-		resources: []
+		resources: [],
+		introductionTags: [],
+		feedbackTags: [],
+		resourcesTags: []
+
   };
   
+
+ 	addIntroductionTags = (tag) => {
+ 		this.setState({
+ 			introductionTags: [...this.state.introductionTags, tag]
+ 		})
+ 	}
+
+ 	addFeedbackTags = (tag) => {
+ 		this.setState({
+ 			feedbackTags: [...this.state.feedbackTags, tag]
+ 		})
+ 	}
+
+ 	addResourcesTags = (tag) => {
+ 		this.setState({
+ 			resourcesTags: [...this.state.resourcesTags, tag]
+ 		})
+ 	}
+
   // do not delete refrence for socket
 	handleChange = (e, { category }) => {
 		if(e.target.value) {
@@ -150,10 +173,10 @@ class KindnessForm extends Component {
 									category: 'introductions'
 								})}
 							/>
-							<div className='suggested-tags-introductions'>
+							<div className='suggested-tags'>
 								{introduction &&
 									introduction.map((tag, index) => (
-										<p key={index}>{tag.name}</p>
+										<p onClick={() => this.addIntroductionTags(tag.name)}className="introduction-tag" key={index}>{tag.name}</p>
 									))}
 							</div>
 						</div>
@@ -170,10 +193,10 @@ class KindnessForm extends Component {
 									category: 'feedback'
 								})}
 							/>
-							<div className='suggested-tags-feedback'>
+							<div className='suggested-tags'>
 								{feedback &&
 									feedback.map((tag, index) => (
-										<p key={index}>{tag.name}</p>
+										<p onClick={() => this.addFeedbackTags(tag.name)} className="introduction-tag" key={index}>{tag.name}</p>
 									))}
 							</div>
 						</div>
@@ -191,10 +214,10 @@ class KindnessForm extends Component {
 									category: 'resources'
 								})}
 							/>
-							<div className='suggested-tags-resources'>
+							<div className='suggested-tags'>
 								{resources &&
 									resources.map((tag, index) => (
-										<p key={index}>{tag.name}</p>
+										<p onClick={() => this.addResourcesTags(tag.name)} className="introduction-tag" key={index}>{tag.name}</p>
 									))}
 							</div>
 						</div>

@@ -14,7 +14,7 @@ class Profile extends Component {
           </button>
           <div className="user-info">
             <h3 className="user-name">{user.name}</h3>
-            <a href={'https://twitter.com/' + user.username} target="_blank" className="twitter-link">{user.username}
+            <a href={'https://twitter.com/' + user.username} target="_blankl" className="twitter-link">{user.username}
             </a>
             <p className="user-bio">{user.bio}</p>
           </div>
