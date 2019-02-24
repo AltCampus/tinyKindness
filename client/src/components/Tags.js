@@ -1,14 +1,20 @@
 import React, { Component } from "react";
 
 class Tags extends Component {
+  deleteTag = () => {
+    this.setSate({
+    
+    })
+  }
+
   render() {
     return (
-      <div className="tags">
-        <div className="tag">
-          <span className="tag-head">Founder</span>
-          <button className="tag-remove">x</button>
-        </div>
-      </div>
+      <span className="tags">
+        <span className="tag">
+          <span className="tag-head">{this.props.tag}</span>
+          <button onClick={this.deleteTag}className="tag-remove">x</button>
+        </span>
+      </span>
     );
   }
 }
