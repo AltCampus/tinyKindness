@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import io from 'socket.io-client';
 import {Link} from "react-router-dom"
-
+import Tags from './Tags.js'
 const socket = io('http://localhost:8001'); 
 
 import { connect } from "react-redux";
@@ -120,7 +120,7 @@ class KindnessForm extends Component {
 	})()
 
 	render() {
-		const { introduction, feedback, resources } = this.state;
+		const { introduction, feedback, resources, introductionTags, feedbackTags, resourcesTags} = this.state;
 		const {username, name, bio} = this.props.user;
 
 		return (
@@ -173,6 +173,9 @@ class KindnessForm extends Component {
 									category: 'introductions'
 								})}
 							/>
+							{
+								introductionTags && introductionTags.map(tag => <Tags tag={tag}/>)
+							}
 							<div className='suggested-tags'>
 								{introduction &&
 									introduction.map((tag, index) => (
@@ -193,6 +196,9 @@ class KindnessForm extends Component {
 									category: 'feedback'
 								})}
 							/>
+							{
+								feedbackTags && feedbackTags.map(tag => <Tags tag={tag}/>)
+							}
 							<div className='suggested-tags'>
 								{feedback &&
 									feedback.map((tag, index) => (
@@ -214,6 +220,9 @@ class KindnessForm extends Component {
 									category: 'resources'
 								})}
 							/>
+							{
+								resourcesTags && resourcesTags.map(tag => <Tags tag={tag}/>)
+							}
 							<div className='suggested-tags'>
 								{resources &&
 									resources.map((tag, index) => (
