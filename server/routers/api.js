@@ -17,12 +17,12 @@ router.get("/feedback", feedbackController.feedbacks);
 
 router.get("/resources", resourcesController.resources);
 
-router.get(
-  "/auth/twitter",
-  passport.authenticate("twitter", { session: false })
-);
+router.get('/auth/twitter', passport.authenticate('twitter', { session: false }));
 
-router.get("/user", auth.isLoggedIn, userController.sendUserData);
+// removing auth for testing purpose
+// router.get('/user', auth.isLoggedIn, userController.sendUserData);
+router.get('/user', userController.sendUserData);
+
 
 // export router
 module.exports = router;
