@@ -4,5 +4,6 @@
     "no-console": "off",
     "consistent-return": ["error", { "treatUndefinedAsUnspecified": false }],
     "no-underscore-dangle": "off"
-  }
+  },
+  "parser": "babel-eslint"
 }
