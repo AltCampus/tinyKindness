@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import io from 'socket.io-client';
 import {Link} from "react-router-dom"
-
+import Tags from './Tags.js'
 const socket = io('http://localhost:8001'); 
 
 import { connect } from "react-redux";
@@ -10,9 +10,32 @@ class KindnessForm extends Component {
 	state = {
 		introduction: [],
 		feedback: [],
-		resources: []
+		resources: [],
+		introductionTags: [],
+		feedbackTags: [],
+		resourcesTags: []
+
   };
   
+
+ 	addIntroductionTags = (tag) => {
+ 		this.setState({
+ 			introductionTags: [...this.state.introductionTags, tag]
+ 		})
+ 	}
+
+ 	addFeedbackTags = (tag) => {
+ 		this.setState({
+ 			feedbackTags: [...this.state.feedbackTags, tag]
+ 		})
+ 	}
+
+ 	addResourcesTags = (tag) => {
+ 		this.setState({
+ 			resourcesTags: [...this.state.resourcesTags, tag]
+ 		})
+ 	}
+
   // do not delete refrence for socket
 	handleChange = (e, { category }) => {
 		if(e.target.value) {
@@ -97,7 +120,7 @@ class KindnessForm extends Component {
 	})()
 
 	render() {
-		const { introduction, feedback, resources } = this.state;
+		const { introduction, feedback, resources, introductionTags, feedbackTags, resourcesTags} = this.state;
 		const {username, name, bio} = this.props.user;
 
 		return (
@@ -150,10 +173,13 @@ class KindnessForm extends Component {
 									category: 'introductions'
 								})}
 							/>
-							<div className='suggested-tags-introductions'>
+							{
+								introductionTags && introductionTags.map(tag => <Tags tag={tag}/>)
+							}
+							<div className='suggested-tags'>
 								{introduction &&
 									introduction.map((tag, index) => (
-										<p key={index}>{tag.name}</p>
+										<p onClick={() => this.addIntroductionTags(tag.name)}className="introduction-tag" key={index}>{tag.name}</p>
 									))}
 							</div>
 						</div>
@@ -170,10 +196,13 @@ class KindnessForm extends Component {
 									category: 'feedback'
 								})}
 							/>
-							<div className='suggested-tags-feedback'>
+							{
+								feedbackTags && feedbackTags.map(tag => <Tags tag={tag}/>)
+							}
+							<div className='suggested-tags'>
 								{feedback &&
 									feedback.map((tag, index) => (
-										<p key={index}>{tag.name}</p>
+										<p onClick={() => this.addFeedbackTags(tag.name)} className="introduction-tag" key={index}>{tag.name}</p>
 									))}
 							</div>
 						</div>
@@ -191,10 +220,13 @@ class KindnessForm extends Component {
 									category: 'resources'
 								})}
 							/>
-							<div className='suggested-tags-resources'>
+							{
+								resourcesTags && resourcesTags.map(tag => <Tags tag={tag}/>)
+							}
+							<div className='suggested-tags'>
 								{resources &&
 									resources.map((tag, index) => (
-										<p key={index}>{tag.name}</p>
+										<p onClick={() => this.addResourcesTags(tag.name)} className="introduction-tag" key={index}>{tag.name}</p>
 									))}
 							</div>
 						</div>
