@@ -165,7 +165,7 @@ class KindnessForm extends Component {
 								INTRODUCTIONS: What type of people you know professionally?
 							</label>
 							<input
-								className='proposal-input'
+								className='proposal-input'deleteTag
 								id='first_name'
 								type='text'
 								name='introduction'
@@ -231,9 +231,12 @@ class KindnessForm extends Component {
 							</div>
 						</div>
 					</div>
+					<div>
 					<button type='submit' className='btn '>
 						Submit
 					</button>
+					<span className="skip-form">Skip</span>
+					</div>
 
 				</form>
 			</div>
