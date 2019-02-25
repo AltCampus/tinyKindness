@@ -166,6 +166,27 @@ class KindnessForm extends Component {
 							/>
 						</div>
 						<div className='proposal-field'>
+							<label htmlFor='first_name'>
+								INTRODUCTIONS: What type of people you know professionally?
+							</label>
+							<input
+								className='proposal-input'deleteTag
+								id='first_name'
+								type='text'
+								name='introduction'
+								onChange={(e) => this.handleChange(e, {
+									category: 'introductions'
+								})}
+							/>
+							{
+								introductionTags && introductionTags.map(tag => <Tags tag={tag}/>)
+							}
+							<div className='suggested-tags'>
+								{introduction &&
+									introduction.map((tag, index) => (
+										<p onClick={() => this.addIntroductionTags(tag.name)}className="introduction-tag" key={index}>{tag.name}</p>
+									))}
+							</div>
 							<form onSubmit={this.handleIntroductionTag}>
 								<label htmlFor='first_name'>
 									INTRODUCTIONS: What type of people you know professionally?
@@ -242,9 +263,12 @@ class KindnessForm extends Component {
 							</form>
 						</div>
 					</div>
+					<div>
 					<button className='btn' onClick={this.handleSubmit} >
 						Submit
 					</button>
+					<Link to="/users"><span className="skip-form">Skip</span></Link>
+					</div>
 
 				</form>
 			</div>
