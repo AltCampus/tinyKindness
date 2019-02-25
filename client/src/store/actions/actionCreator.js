@@ -47,3 +47,9 @@ export function submitUserData(data, userId) {
       .then(data => console.log(data));
   };
 }
+
+export function getAllUsers(){
+  return dispatch => {
+  fetch(`${url}/helper`).then(res => res.json()).then(data => console.log(data))
+  }
+}

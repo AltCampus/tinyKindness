@@ -129,3 +129,13 @@ input {
   color: white;
   box-shadow: 0 0 7px .5px black;
 }
+.form-bottom{
+  // display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.skip-form{
+  margin-left: 4em;
+  cursor: pointer;
+}

@@ -1,6 +1,12 @@
 import React, { Component } from "react";
+import {connect} from "react-redux"
 
 class HelperList extends Component {
+
+
+  componentDidMount(){
+    this.props.dispatch(getAllUsers())
+  }
   render() {
     return (
       <main className="helper-table">
