@@ -3,6 +3,12 @@
   "rules": {
     "no-console": "off",
     "consistent-return": ["error", { "treatUndefinedAsUnspecified": false }],
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "no-tabs": "off",
+    "indent": "off",
+    "default-case": "off",
+    "no-lone-blocks": "off",
+    "no-return-await" : "off",
+    "no-else-return": "off"
   }
 }

@@ -5,104 +5,81 @@ import {Link} from "react-router-dom"
 const socket = io('http://localhost:8001'); 
 
 import { connect } from "react-redux";
+import {
+	getIntroductionTag,
+	getFeedbackTags,
+	getResourceTags
+} from "../store/actions/actionCreator";
+
 
 class KindnessForm extends Component {
 	state = {
-		introduction: [],
-		feedback: [],
-		resources: []
+
+		introductionTags: [],
+		feedbackTags: [],
+		resourcesTags: []
   };
   
   // do not delete refrence for socket
-	handleChange = (e, { category }) => {
-		if(e.target.value) {
-			socket.emit('getTags', {
-				value : e.target.value,
-				category
+  //   handleChange = (e) => {
+  //   this.setState({
+  //     [e.target.name] : e.target.value
+  //   }, () => {
+  //     socket.emit('introductions', {
+  //       value : this.state.introduction
+  //     })
+  //   })
+  // }
+
+	handleIntroductionTag = (e) => {
+		this.setState({
+			introduction: e.target.value
+		});
+		this.props.dispatch(
+			getIntroductionTag(e.target.value, (succeed, tags) => {
+				if (succeed) {
+					this.setState({
+						introductionTags: tags.slice(0, 9)
+					});
+				}
 			})
-		} else {
-			this.setState({
-				[e.target.name] : []
+		);
+	};
+	handleResourcesTags = (e) => {
+		this.setState({
+			resources: e.target.value
+		});
+		this.props.dispatch(
+			getResourceTags(e.target.value, (succeed, tags) => {
+				if (succeed) {
+					this.setState({
+						resourcesTags: tags.slice(0, 9)
+					});
+				}
 			})
-		}
-  }
-
-	// handleIntroductionTag = (e) => {
-	// 	this.setState({
-	// 		introduction: e.target.value
-	// 	});
-	// 	this.props.dispatch(
-	// 		getIntroductionTag(e.target.value, (succeed, tags) => {
-	// 			if (succeed) {
-	// 				this.setState({
-	// 					introductionTags: tags.slice(0, 9)
-	// 				});
-	// 			}
-	// 		})
-	// 	);
-	// };
-	// handleResourcesTags = (e) => {
-	// 	this.setState({
-	// 		resources: e.target.value
-	// 	});
-	// 	this.props.dispatch(
-	// 		getResourceTags(e.target.value, (succeed, tags) => {
-	// 			if (succeed) {
-	// 				this.setState({
-	// 					resourcesTags: tags.slice(0, 9)
-	// 				});
-	// 			}
-	// 		})
-	// 	);
-	// };
-	// handleFeedbackTags = (e) => {
-	// 	this.setState({
-	// 		feedback: e.target.value
-	// 	});
-	// 	this.props.dispatch(
-	// 		getFeedbackTags(e.target.value, (succeed, tags) => {
-	// 			if (succeed) {
-	// 				this.setState({
-	// 					feedbackTags: tags.slice(0, 9)
-	// 				});
-	// 			}
-	// 		})
-	// 	);
-	// };
-
-	getTags = (() => {
-		socket.on('sendTags', (data) => {
-			const { category, tags } = data;
-			switch(category) {
-				case "introductions": {
+		);
+	};
+	handleFeedbackTags = (e) => {
+		this.setState({
+			feedback: e.target.value
+		});
+		this.props.dispatch(
+			getFeedbackTags(e.target.value, (succeed, tags) => {
+				if (succeed) {
 					this.setState({
-						introduction: [...tags]
-					})
+						feedbackTags: tags.slice(0, 9)
+					});
 				}
-				break;
-				case "feedback": {
-					this.setState({
-						feedback: [...tags]
-					})
-				}
-				break;
-				case "resources": {
-					this.setState({
-						resources: [...tags]
-					})
-				}
-				break;
-			}
-		})
-	})()
-
+			})
+		);
+	};
 	render() {
-		const { introduction, feedback, resources } = this.state;
+		const { introductionTags, feedbackTags, resourcesTags } = this.state;
 		const {username, name, bio} = this.props.user;
 
 		return (
 			<div className='proposal center'>
-      <Link to={`/user/@${username}`}>Profile</Link>
+      <Link to={`/user/${username}`}>Profile</Link>
 				<form className='wrapper proposal-form animated bounceIn'>
 					<h2 className='proposal-head'>Add Your Details</h2>
 					<div className='row'>
@@ -146,13 +123,11 @@ class KindnessForm extends Component {
 								id='first_name'
 								type='text'
 								name='introduction'
-								onChange={(e) => this.handleChange(e, {
-									category: 'introductions'
-								})}
+								onChange={this.handleIntroductionTag}
 							/>
 							<div className='suggested-tags-introductions'>
-								{introduction &&
-									introduction.map((tag, index) => (
+								{introductionTags &&
+									introductionTags.map((tag, index) => (
 										<p key={index}>{tag.name}</p>
 									))}
 							</div>
@@ -166,13 +141,11 @@ class KindnessForm extends Component {
 								id='first_name'
 								type='text'
 								name='feedback'
-								onChange={(e) => this.handleChange(e, {
-									category: 'feedback'
-								})}
+								onChange={this.handleFeedbackTags}
 							/>
 							<div className='suggested-tags-feedback'>
-								{feedback &&
-									feedback.map((tag, index) => (
+								{feedbackTags &&
+									feedbackTags.map((tag, index) => (
 										<p key={index}>{tag.name}</p>
 									))}
 							</div>
@@ -187,16 +160,14 @@ class KindnessForm extends Component {
 								id='first_name'
 								type='text'
 								name='resources'
-								onChange={(e) => this.handleChange(e, {
-									category: 'resources'
-								})}
+								onChange={this.handleResourcesTags}
 							/>
-							<div className='suggested-tags-resources'>
-								{resources &&
-									resources.map((tag, index) => (
+							{/* <div className='suggested-tags-resources'>
+								{resourcesTags &&
+									resourcesTags.map((tag, index) => (
 										<p key={index}>{tag.name}</p>
-									))}
-							</div>
+									))
+							</div>} */}
 						</div>
 					</div>
 					<button type='submit' className='btn '>
