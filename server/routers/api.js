@@ -1,8 +1,7 @@
-const passport = require('passport');
-const jsonwebtoken = require('jsonwebtoken');
-
-// import modules
+const passport = require("passport");
 const router = require("express").Router();
+const auth = require("./../modules/auth");
+
 const introductionsController = require("../controllers/introductionTag.controller");
 const feedbackController = require("../controllers/feedbackTag.controller");
 const resourcesController = require("../controllers/resourcesTag.controller");
@@ -13,15 +12,18 @@ router.get("/check", (req, res) => {
   res.send("You are connected to TinyKindness");
 });
 
-router.get('/auth/twitter', passport.authenticate('twitter', {session: false}));
+router.get("/introductions", introductionsController.introductions);
 
-router.post("/v1/token", userController.createUser);
+router.get("/feedback", feedbackController.feedbacks);
 
-router.get("/v1/introductions", introductionsController.introductions);	
+router.get("/resources", resourcesController.resources);
 
-router.get("/v1/feedback", feedbackController.feedbacks);	
+router.get('/auth/twitter', passport.authenticate('twitter', { session: false }));
 
-router.get("/v1/resources", resourcesController.resources);
+// removing auth for testing purpose
+// router.get('/user', auth.isLoggedIn, userController.sendUserData);
+router.get('/user', userController.sendUserData);
+
 
 // Sending all helper list on '/api/v1/helper'
 router.get("/v1/helper", helperController.getHelper);

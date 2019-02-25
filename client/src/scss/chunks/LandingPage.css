@@ -1,0 +1,133 @@
+.landing {
+  height: 100vh;
+  background: url("/images/../../images/landing-bg.png") no-repeat center;
+  background-size: cover;
+}
+
+.landing-sections {
+  display: -ms-grid;
+  display: grid;
+  height: 100%;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.landing-descriptions {
+  text-align: center;
+  margin: calc(100% - 70%) 0;
+}
+
+.landing-head {
+  font-size: 2.2rem;
+  text-align: center;
+  font-weight: 500;
+  line-height: 2.5rem;
+}
+
+.links-head {
+  color: #d9d9d9;
+  font-weight: 300;
+}
+
+.description-head {
+  color: #f3f1eb;
+}
+
+.description-more {
+  color: #d9d9d9;
+  margin: 1rem auto;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  font-weight: 300;
+  width: 90%;
+}
+
+.btn {
+  background-color: #d5891c !important;
+  margin: 2rem 0;
+}
+
+.twitter-login {
+  background-color: #1da1f2 !important;
+  margin: 1rem 0;
+}
+
+.twitter-login i {
+  vertical-align: top;
+}
+
+.seperator {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #fff;
+}
+
+.btn {
+  margin: 1rem 0;
+}
+
+.outer {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  position: relative;
+  display: none;
+}
+
+.about-modal {
+  width: 700px;
+  margin: 0 auto;
+  background: #fcfcfc;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 1px 5px 0px #c7c6c6;
+          box-shadow: 2px 1px 5px 0px #c7c6c6;
+  padding: 1rem;
+}
+
+.about-modal li {
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+}
+
+.about-header {
+  margin: 1rem 0;
+  font-size: 1.9rem;
+  font-weight: 400;
+}
+
+.about-description {
+  font-size: 1rem;
+  line-height: 1.4rem;
+}
+
+.about-subheader {
+  font-weight: 500;
+  margin: 1rem 0;
+  font-size: 1.5rem;
+}
+
+.close-about {
+  position: absolute;
+  top: -20px;
+  margin: 0;
+  right: -20px;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  height: 40px !important;
+  width: 40px;
+  background: #f67474 !important;
+}
+
+.open {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.scroll-box {
+  height: 250px;
+  overflow: scroll;
+}
+/*# sourceMappingURL=LandingPage.css.map */

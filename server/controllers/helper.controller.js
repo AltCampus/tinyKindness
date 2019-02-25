@@ -4,12 +4,7 @@ module.exports = {
   getHelper: (req, res) => {
     User.find({}, (err, users) => {
       if (err) throw err;
-      const filteredArr = users.reduce((acc, val) => {
-        if (val.introductions.length || val.resources.length || val.feedback.length) {
-          acc = [...acc, val];  
-        }
-        return acc;
-      }, [])
+      const filteredArr = users.filter(user => (user.introductions.length || user.resources.length || user.feedback.length));
       if (filteredArr.length) {
         res.json({ filteredArr })
       } else {
