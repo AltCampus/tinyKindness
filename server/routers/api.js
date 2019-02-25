@@ -6,6 +6,7 @@ const introductionsController = require("../controllers/introductionTag.controll
 const feedbackController = require("../controllers/feedbackTag.controller");
 const resourcesController = require("../controllers/resourcesTag.controller");
 const userController = require("../controllers/user.controller");
+const helperController = require('../controllers/helper.controller');
 
 router.get("/check", (req, res) => {
   res.send("You are connected to TinyKindness");
@@ -17,12 +18,16 @@ router.get("/feedback", feedbackController.feedbacks);
 
 router.get("/resources", resourcesController.resources);
 
-router.get(
-  "/auth/twitter",
-  passport.authenticate("twitter", { session: false })
-);
+router.get('/auth/twitter', passport.authenticate('twitter', { session: false }));
 
-router.get("/user", auth.isLoggedIn, userController.sendUserData);
+// removing auth for testing purpose
+// router.get('/user', auth.isLoggedIn, userController.sendUserData);
+router.get('/user', userController.sendUserData);
 
+
+// Sending all helper list on '/api/v1/helper'
+router.get("/v1/helper", helperController.getHelper);
+
+// verify user by JWT token and send user data
 // export router
 module.exports = router;
