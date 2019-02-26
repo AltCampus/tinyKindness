@@ -1,0 +1,61 @@
+.helper-table {
+  height: 100%;
+  padding: 100px 0;
+  background-size: cover;
+}
+
+.table-caption {
+  margin: 0;
+}
+
+.table-wrapper {
+  height: 65vh;
+  overflow: auto;
+}
+
+.table-caption {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 400;
+  font-weight: 300;
+  margin: 0.8rem 0;
+}
+
+th {
+  font-weight: 500;
+}
+
+tr {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+}
+
+.modal-mini-head {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.modal-user-detail {
+  font-size: 1.1rem !important;
+}
+
+.user-popup {
+  width: 500px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(11, 11, 11, 0);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+  -webkit-box-shadow: inset 0 0 20px black;
+}
+/*# sourceMappingURL=HelperList.css.map */

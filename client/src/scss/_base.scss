@@ -111,3 +111,31 @@ input {
 ::placeholder {
   font-weight: 300;
 }
+.introduction-tag{
+  border-bottom: 1px solid lightgrey;
+  padding: 10px 0px;
+  font-size: 1.3rem;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+
+}
+
+.suggested-tags{
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  background: rgba(48, 42, 38, 0.7);
+  color: white;
+  box-shadow: 0 0 7px .5px black;
+}
+.form-bottom{
+  // display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.skip-form{
+  margin-left: 4em;
+  cursor: pointer;
+}

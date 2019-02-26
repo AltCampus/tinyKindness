@@ -1,0 +1,57 @@
+.proposal {
+  padding: 100px 0;
+  background: url("/images/../../images/landing-bg.png") no-repeat center;
+  background-size: cover;
+}
+
+.proposal-head {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 0;
+  font-weight: 300;
+}
+
+.proposal-form {
+  background: #fcfcfc;
+  padding: 0.5rem 0;
+  border-radius: 5px;
+  width: 500px !important;
+  margin: 0 auto;
+}
+
+.proposal-field {
+  width: 80%;
+  margin: 1.5rem auto;
+  position: relative;
+}
+
+.proposal-field label {
+  font-size: 1.2rem;
+  text-align: left;
+  display: block;
+  font-weight: 300;
+  margin: 0.5rem 0;
+  color: #696969;
+}
+
+.proposal-input {
+  display: block;
+  -webkit-box-sizing: border-box !important;
+          box-sizing: border-box !important;
+  padding: 0.5rem 1.2rem !important;
+  border: none !important;
+  -webkit-box-shadow: 0px 0px 2px 2px #ddd !important;
+          box-shadow: 0px 0px 2px 2px #ddd !important;
+  border-radius: 3px !important;
+  -webkit-transition: -webkit-box-shadow 0.3s ease;
+  transition: -webkit-box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, -webkit-box-shadow 0.3s ease;
+  margin-bottom: 0 !important;
+}
+
+.proposal-input:focus {
+  -webkit-box-shadow: 0px 0px 2px 2px #666 !important;
+          box-shadow: 0px 0px 2px 2px #666 !important;
+}
+/*# sourceMappingURL=Proposal.css.map */

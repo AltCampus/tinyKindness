@@ -1,0 +1,74 @@
+@media only screen and (max-width: 480px) {
+  .logo {
+    text-align: center;
+    margin: 0.25rem 0;
+  }
+  -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+  .landing-sections {
+    -ms-grid-rows: 0fr 0fr;
+        grid-template-rows: 0fr 0fr;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    padding-top: 2.2rem;
+  }
+  .landing-descriptions {
+    margin: 0;
+  }
+  .about-modal {
+    width: 300px;
+  }
+  .proposal-form {
+    width: 350px !important;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .landing {
+    height: 100%;
+    overflow: auto;
+  }
+  .landing-sections {
+    grid-gap: 0px;
+  }
+  .description-head {
+    font-size: 1.5rem;
+    padding: 0 1rem;
+  }
+  .links-head {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  .landing-description {
+    margin: calc(100% - 80%) 0;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 800px) {
+  .logo {
+    -ms-grid-column-align: center;
+        justify-self: center;
+  }
+  .description-head {
+    font-size: 1.5rem;
+    padding: 0 1rem;
+    margin: 0.9rem 0;
+  }
+  .about-modal {
+    width: 100%;
+  }
+  .proposal-form {
+    width: 475px !important;
+  }
+}
+
+@media screen and (min-width: 801px) {
+  .logo {
+    -ms-grid-column-align: center;
+        justify-self: center;
+  }
+  .landing-descriptions {
+    margin: calc(100% - 80%) 0;
+  }
+}
+/*# sourceMappingURL=responsive.css.map */
