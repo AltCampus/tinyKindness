@@ -17,9 +17,11 @@ router.get('/api/auth/twitter/callback', passport.authenticate('twitter', {sessi
   res.redirect(`http://localhost:8001/?t=${token}`);
 });
 
-router.get("/user", (req, res) => {
+router.get("/users/:username", (req, res) => {
   res.render("index");
 });
+
+// router.get('')
 
 // export router
 module.exports = router;

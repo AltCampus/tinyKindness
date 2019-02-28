@@ -11,15 +11,19 @@ router.get('/check', (req, res) => {
   res.send('You are connected to TinyKindness');
 });
 
-router.get('/introductions', introductionsController.introductions);	
+router.get('/introductions', introductionsController.introductions);
 
-router.get('/feedback', feedbackController.feedbacks);	
+router.get('/feedback', feedbackController.feedbacks);
 
 router.get('/resources', resourcesController.resources);
 
-router.get('/auth/twitter', passport.authenticate('twitter', {session: false}));
+router.get('/auth/twitter', passport.authenticate('twitter', { session: false }));
 
-router.get('/user', auth.isLoggedIn, userController.sendUserData);
+router.get('/users/:userName', auth.isLoggedIn, userController.sendUserData);
+
+router.put('/users', auth.isLoggedIn, userController.updateUser);
+
+// router.get('/user/:userName', userController.sendProfile)
 
 // export router
 module.exports = router;

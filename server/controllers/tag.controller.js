@@ -1,6 +1,6 @@
 const Introductions = require('./../models/IntroductionTag');
 const Feedbacks = require('./../models/FeedbackTag');
-const Resources = require('./../models/ResourcesTag');
+const Resources = require('./../models/ResourcesTag');  
 
 module.exports = {
   async sendTags (queryData) {
