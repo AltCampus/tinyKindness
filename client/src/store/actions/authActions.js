@@ -3,8 +3,8 @@ import { GET_USER_DATA } from './types';
 const URI = 'http://localhost:8001/api/v1';
 
 const authActions = {
-  getUserData: (token, cb) => (dispatch) => {
-    fetch(`${URI}/user`, {
+  getUserData: ({ token, username }, cb) => (dispatch) => {
+    fetch(`${URI}/users/${username ? '' : `@${username}`}`, {
       headers: {
         Authorization: token,
       },

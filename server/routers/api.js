@@ -12,18 +12,25 @@ router.get("/check", (req, res) => {
   res.send("You are connected to TinyKindness");
 });
 
-router.get("/introductions", introductionsController.introductions);
+// router.get("/introductions", introductionsController.introductions);
 
-router.get("/feedback", feedbackController.feedbacks);
+// router.get("/feedback", feedbackController.feedbacks);
 
-router.get("/resources", resourcesController.resources);
+// router.get('/introductions', introductionsController.introductions);
 
-router.get('/auth/twitter', passport.authenticate('twitter', { session: false }));
+// router.get('/feedback', feedbackController.feedbacks);
 
 // removing auth for testing purpose
 // router.get('/user', auth.isLoggedIn, userController.sendUserData);
 router.get('/user', userController.sendUserData);
 
+router.get('/auth/twitter', passport.authenticate('twitter', { session: false }));
+
+router.get('/users/:userName', auth.isLoggedIn, userController.sendUserData);
+
+router.put('/users', auth.isLoggedIn, userController.updateUser);
+
+// router.get('/user/:userName', userController.sendProfile)
 
 // Sending all helper list on '/api/v1/helper'
 router.get("/v1/helper", helperController.getHelper);

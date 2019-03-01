@@ -18,18 +18,18 @@ class LandingPage extends Component {
     const token = localStorage.getItem('token');
     if(token) {
       console.log(token, 'in landing page')
-      this.getUserData(token);
+      this.getUserData({token});
     } else {
       if(location.href.length > 22) {
         const token = location.href.match(/\?t=(.*)/)[1];
         localStorage.setItem('token', token);
-        this.getUserData(token)
+        this.getUserData({token})
       }
     }
   }
 
-  getUserData(token) {
-    this.props.dispatch(authActions.getUserData(token, (userStatus) => {
+  getUserData(dataCreds) {
+    this.props.dispatch(authActions.getUserData(dataCreds, (userStatus) => {
       if(userStatus) {
         this.props.history.push('/user/kind')
       }

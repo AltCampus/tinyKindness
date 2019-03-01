@@ -130,7 +130,7 @@ class KindnessForm extends Component {
 		const {username, name, bio} = this.props.user;
 		return (
 			<div className='proposal center'>
-      <Link to={`/user/@${username}`}>Profile</Link>
+      <Link to={`/users/@${username}`}>Profile</Link>
 				<form className='wrapper proposal-form animated bounceIn'>
 					<h2 className='proposal-head'>Add Your Details</h2>
 					<div className='row'>

@@ -1,11 +1,32 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
-
+import authActions from "../store/actions/authActions";
 
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true
+    }
+  }
+
+  componentDidMount() {
+    // get data for profile
+    const token = localStorage.getItem('token');
+    const { username } = this.props.match.params;
+
+    this.props.dispatch(authActions.getUserData({token, username}, (userStatus) => {
+      if (userStatus) {
+        this.setState({
+          isLoading: false
+        });
+      }
+    }))
+  }
 
   render() {
     const {user} = this.props;
+    
     return (
       <main className="profile">
         <div className="profile-wrapper wrapper">
@@ -40,6 +61,7 @@ class Profile extends Component {
 
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     user: state.user
   }

@@ -17,7 +17,7 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={LandingPage} />
             <Route path="/user/kind" exact component={KindnessForm} />
-            <Route path="/user/@:username" exact component={Profile} />
+            <Route path="/users/:username" component={Profile} />
             <Route path="/users" exact component={HelperList} />
           </Switch>
         </div>
