@@ -3471,6 +3471,37 @@ input:focus {
   font-weight: 300;
 }
 
+.introduction-tag {
+  border-bottom: 1px solid lightgrey;
+  padding: 10px 0px;
+  font-size: 1.3rem;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.suggested-tags {
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  background: rgba(48, 42, 38, 0.7);
+  color: white;
+  -webkit-box-shadow: 0 0 7px .5px black;
+          box-shadow: 0 0 7px .5px black;
+}
+
+.form-bottom {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.skip-form {
+  margin-left: 4em;
+  cursor: pointer;
+}
+
 .wrapper {
   max-width: 960px;
   width: 100%;
@@ -3483,6 +3514,9 @@ a {
 }
 
 header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: fixed;
   z-index: 10;
   top: 0;
@@ -3771,23 +3805,6 @@ tr {
 .proposal-input:focus {
   -webkit-box-shadow: 0px 0px 2px 2px #666 !important;
           box-shadow: 0px 0px 2px 2px #666 !important;
-}
-
-.suggested-tags-introductions {
-  height: 60px;
-  display: block;
-  -webkit-box-sizing: border-box !important;
-          box-sizing: border-box !important;
-  padding: 0.5rem 1.2rem !important;
-  border: none !important;
-  -webkit-box-shadow: 0px 0px 2px 2px #ddd !important;
-          box-shadow: 0px 0px 2px 2px #ddd !important;
-  border-radius: 3px !important;
-  -webkit-transition: -webkit-box-shadow 0.3s ease;
-  transition: -webkit-box-shadow 0.3s ease;
-  transition: box-shadow 0.3s ease;
-  transition: box-shadow 0.3s ease, -webkit-box-shadow 0.3s ease;
-  margin-bottom: 0 !important;
 }
 
 .profile {

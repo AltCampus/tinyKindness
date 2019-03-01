@@ -32,3 +32,34 @@ export function getFeedbackTags(query, cb) {
 			});
 	};
 }
+
+export function submitUserData(data, userId) {
+	console.log(data, userId);
+	return (dispatch) => {
+		fetch(`${url}/${userId}/info`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(data)
+		})
+			.then((res) => res.json())
+			.then((data) => console.log(data));
+	};
+}
+
+export function getAllUsers() {
+	return (dispatch) => {
+		fetch(`${url}/helper`)
+			.then((res) => res.json())
+			.then((data) => console.log(data));
+	};
+}
+
+export function searchUserByTag(query) {
+	return (dispatch) => {
+		fetch(`${url}/user?q=${query}`)
+			.then((res) => res.json())
+			.then((data) => console.log(data));
+	};
+}

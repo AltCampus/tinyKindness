@@ -1,4 +1,10 @@
-header {
+.top_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   position: fixed;
   z-index: 10;
   top: 0;
@@ -10,9 +16,30 @@ header {
   padding: 1rem 0;
 }
 
+.top_header .search-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.top_header .search-input .search {
+  border: 0.5px solid wheat;
+  margin-right: 15px;
+  padding: 0 9px;
+  border-radius: 2px;
+  outline: none;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.top_header .search-input .signIn-Link {
+  margin-right: 20px;
+}
+
 .logo {
   color: #fff;
   font-weight: 300;
+  margin-left: 20px;
 }
 
 .drop-btn {
