@@ -22,6 +22,7 @@ router.get('/api/auth/twitter/callback', passport.authenticate('twitter', {sessi
 });
 
 router.get("/users/:username", (req, res) => {
+  console.log('rendering single user');
   res.render("index");
 });
 

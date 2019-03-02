@@ -7,11 +7,11 @@ module.exports = {
   sendUserData(req, res) {
     if (!req.query.q) {
       const token = req.headers.authorization;
-      const username = req.params.userName.slice(1);
+      // const username = req.params.userName.slice(1);
       jsonwebtoken.verify(token, 'secret', (err, decoded) => {
         if (decoded.user) {
           const { _id } = decoded.user;
-          User.findOne(req.params.userName ? { _id } : { username }, (e, user) => {
+          User.findOne({ _id }, (e, user) => {
             res.json({
               user,
             });

@@ -22,15 +22,15 @@ router.get("/check", (req, res) => {
 
 // removing auth for testing purpose
 // router.get('/user', auth.isLoggedIn, userController.sendUserData);
-router.get('/user', userController.sendUserData);
+// router.get('/user', userController.sendUserData);
 
 router.get('/auth/twitter', passport.authenticate('twitter', { session: false }));
 
-router.get('/users/:userName', auth.isLoggedIn, userController.sendUserData);
+router.get('/users', auth.isLoggedIn, userController.sendUserData);
 
 router.put('/users', auth.isLoggedIn, userController.updateUser);
 
-// router.get('/user/:userName', userController.sendProfile)
+// router.get('/profile/:username')
 
 // Sending all helper list on '/api/v1/helper'
 router.get("/v1/helper", helperController.getHelper);

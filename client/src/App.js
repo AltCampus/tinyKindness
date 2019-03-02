@@ -1,12 +1,12 @@
 import React, { Component, lazy, Suspense } from "react";
-import LandingPage from "./components/LandingPage";
 import "./scss/app.scss";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import KindnessForm from "./components/KindnessForm";
 import Header from "./components/Header";
-import Profile from "./components/Profile";
-import HelperList from "./components/HelperList";
 
+const KindnessForm = lazy(() => import("./components/KindnessForm"));
+const Profile = lazy(() => import("./components/Profile"));
+const HelperList = lazy(() => import("./components/HelperList"));
+const LandingPage = lazy(() => import("./components/LandingPage"));
 
 class App extends Component {
   render() {
@@ -15,10 +15,12 @@ class App extends Component {
         <div>
           <Header />
           <Switch>
-            <Route path="/" exact component={LandingPage} />
-            <Route path="/user/kind" exact component={KindnessForm} />
-            <Route path="/users/:username" component={Profile} />
-            <Route path="/users" exact component={HelperList} />
+            <Suspense fallback={'Loading...'}>
+              <Route path="/" exact component={LandingPage} />
+              <Route path="/user/kind" exact component={KindnessForm} />
+              <Route path="/users/:username" component={Profile} />
+              <Route path="/users" exact component={HelperList} />
+            </Suspense>
           </Switch>
         </div>
       </BrowserRouter>

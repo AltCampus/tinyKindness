@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
 import authActions from "../store/actions/authActions";
+import Tags from "./Tags";
 
 class Profile extends Component {
   constructor(props) {
@@ -13,8 +14,8 @@ class Profile extends Component {
   componentDidMount() {
     // get data for profile
     const token = localStorage.getItem('token');
-    const { username } = this.props.match.params;
-
+    const username = location.href.slice(location.href.indexOf('@')+1)
+    
     this.props.dispatch(authActions.getUserData({token, username}, (userStatus) => {
       if (userStatus) {
         this.setState({
@@ -24,10 +25,21 @@ class Profile extends Component {
     }))
   }
 
+  displayTags = (tags) => {
+    return <div>
+      {
+        tags.map(tag => <Tags tag={tag}/>)
+      }
+    </div>
+  }
+
   render() {
     const {user} = this.props;
-    
+    const { isLoading } = this.state;
+
     return (
+      isLoading ? <p>Loading...</p> : 
+      <>  
       <main className="profile">
         <div className="profile-wrapper wrapper">
           <button className="btn edit-btn">
@@ -55,15 +67,15 @@ class Profile extends Component {
           </div>
         </div>
       </main>
+      </>
     );
   }
 }
 
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
-    user: state.user
+    user: state.user || {}
   }
 }
 

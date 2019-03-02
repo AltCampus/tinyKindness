@@ -15,12 +15,10 @@ class KindnessForm extends Component {
 		introductionTags: [],
 		feedbackTags: [],
 		resourcesTags: []
-
   };
   
 
  	addIntroductionTags = (tag) => {
-		// console.log(tag)
  		this.setState({
  			introductionTags: [...this.state.introductionTags, tag._id ? tag : {
 				 _id : null,
@@ -41,7 +39,7 @@ class KindnessForm extends Component {
  		})
  	}
 
-  // do not delete refrence for socket
+  // do not delete reference for socket
 	handleChange = (e, { category }) => {
 		if(e.target.value) {
 			socket.emit('getTags', {
@@ -166,27 +164,6 @@ class KindnessForm extends Component {
 							/>
 						</div>
 						<div className='proposal-field'>
-							<label htmlFor='first_name'>
-								INTRODUCTIONS: What type of people you know professionally?
-							</label>
-							<input
-								className='proposal-input'deleteTag
-								id='first_name'
-								type='text'
-								name='introduction'
-								onChange={(e) => this.handleChange(e, {
-									category: 'introductions'
-								})}
-							/>
-							{
-								introductionTags && introductionTags.map(tag => <Tags tag={tag}/>)
-							}
-							<div className='suggested-tags'>
-								{introduction &&
-									introduction.map((tag, index) => (
-										<p onClick={() => this.addIntroductionTags(tag.name)}className="introduction-tag" key={index}>{tag.name}</p>
-									))}
-							</div>
 							<form onSubmit={this.handleIntroductionTag}>
 								<label htmlFor='first_name'>
 									INTRODUCTIONS: What type of people you know professionally?
