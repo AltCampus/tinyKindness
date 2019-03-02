@@ -1,1 +1,3 @@
 export const GET_USER_DATA = 'GET_USER_DATA';
+
+export const SET_USER_PROFILE = 'SET_USER_PROFILE';

@@ -11,11 +11,9 @@ module.exports = {
       jsonwebtoken.verify(token, 'secret', (err, decoded) => {
         if (decoded.user) {
           const { _id } = decoded.user;
-          User.findOne({ _id }, (e, user) => {
-            res.json({
-              user,
-            });
-          });
+          User.findOne({ _id }, (err, user) => {
+            res.json({ user });
+          })
         }
       });
     } else {
@@ -90,9 +88,17 @@ module.exports = {
       });
     });
   },
-  // sendProfile(req, res) {
-  //   const {userName} = req.params;
+  getUserProfile(req, res) {
+    const username = req.params.username.slice(1);
 
-  //   console.log(req.params);
-  // }
+    User.findOne({ username })
+      .populate('introductions')
+      .populate('resources')
+      .populate('feedback')
+      .exec((err, user) => {
+        res.json({
+          user
+        })
+      })
+  }
 };

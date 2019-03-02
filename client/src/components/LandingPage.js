@@ -37,6 +37,8 @@ class LandingPage extends Component {
   }
 
   render() {
+
+    
     return (
       <main className="landing">
         <div className="landing-sections wrapper">

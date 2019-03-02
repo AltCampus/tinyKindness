@@ -30,7 +30,7 @@ router.get('/users', auth.isLoggedIn, userController.sendUserData);
 
 router.put('/users', auth.isLoggedIn, userController.updateUser);
 
-// router.get('/profile/:username')
+router.get('/profile/:username', auth.isLoggedIn, userController.getUserProfile)
 
 // Sending all helper list on '/api/v1/helper'
 router.get("/v1/helper", helperController.getHelper);

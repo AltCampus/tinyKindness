@@ -1,4 +1,4 @@
-import { GET_USER_DATA } from './types';
+import { GET_USER_DATA, SET_USER_PROFILE } from './types';
 
 const URI = 'http://localhost:8001/api/v1';
 
@@ -22,6 +22,28 @@ const authActions = {
         }
     });
   },
+  getUserProfile : ({token, username}, cb) => (dispatch) => {
+    fetch(`${URI}/profile/@${username}`, {
+      headers: {
+        Authorization: token,
+      },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          res.json()
+            .then((user) => {
+              console.log(user);
+              dispatch({
+                type: SET_USER_PROFILE,
+                user,
+              });
+              cb(true);
+            });
+        }
+    });
+
+  }
+
 };
 
 export default authActions;

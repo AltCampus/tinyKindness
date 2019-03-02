@@ -14,9 +14,9 @@ class Profile extends Component {
   componentDidMount() {
     // get data for profile
     const token = localStorage.getItem('token');
-    const username = location.href.slice(location.href.indexOf('@')+1)
+    const username = location.href.slice(location.href.indexOf('@') + 1);
     
-    this.props.dispatch(authActions.getUserData({token, username}, (userStatus) => {
+    this.props.dispatch(authActions.getUserProfile({token, username}, (userStatus) => {
       if (userStatus) {
         this.setState({
           isLoading: false
@@ -53,15 +53,19 @@ class Profile extends Component {
           </div>
           <div className="user-details">
             <div className="user-mini-section">
-              <h4 className="user-mini-head">Strong Areas</h4>
-              <p className="user-detail">blah blah blah</p>
+              <h4 className="user-mini-head">Introductions </h4>
+              <>
+                {
+                  user.introductions && this.displayTags(user.introductions) 
+                }
+              </>
             </div>
             <div className="user-mini-section">
-              <h4 className="user-mini-head">People You Know</h4>
+              <h4 className="user-mini-head">Feedbacks</h4>
               <p className="user-detail">blah blah</p>
             </div>
             <div className="user-mini-section">
-              <h4 className="user-mini-head">Interests</h4>
+              <h4 className="user-mini-head">Resources</h4>
               <p className="user-detail">blah blah blah</p>
             </div>
           </div>

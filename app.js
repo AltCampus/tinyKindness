@@ -14,6 +14,8 @@ const webpackConfig = require("./webpack.config");
 
 const app = express();
 // const bootStrap = require('./server/modules/bootStrap');
+// require('./server/modules/userBootstrap');
+
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, './server/views'));
