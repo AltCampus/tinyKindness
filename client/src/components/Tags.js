@@ -11,7 +11,7 @@ class Tags extends Component {
     return (
       <span className="tags">
         <span className="tag">
-          <span className="tag-head">{this.props.tag}</span>
+          <span className="tag-head">{this.props.tag.name}</span>
           <button onClick={this.deleteTag}className="tag-remove">x</button>
         </span>
       </span>

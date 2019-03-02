@@ -62,11 +62,19 @@ class Profile extends Component {
             </div>
             <div className="user-mini-section">
               <h4 className="user-mini-head">Feedbacks</h4>
-              <p className="user-detail">blah blah</p>
+              <>
+                {
+                  user.feedback && this.displayTags(user.feedback) 
+                }
+              </>
             </div>
             <div className="user-mini-section">
               <h4 className="user-mini-head">Resources</h4>
-              <p className="user-detail">blah blah blah</p>
+              <>
+                {
+                  user.resources && this.displayTags(user.resources) 
+                }
+              </>
             </div>
           </div>
         </div>
@@ -79,7 +87,7 @@ class Profile extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user || {}
+    user: state.profileUser || {}
   }
 }
 

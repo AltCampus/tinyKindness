@@ -4,7 +4,7 @@ const async = require('async')
 const dummyUsers = [
   {
     name: 'User1',
-    username: '@user1',
+    username: 'user1',
     imageURL : 'https://dummyimage.com/vga',
     bio: 'Dummy User',
     introductions: ['5c4fd7f77f9e647a7509836f', '5c4fd7f77f9e647a7509833c', '5c4fd7f77f9e647a75098346'],
@@ -13,7 +13,7 @@ const dummyUsers = [
   },
   {
     name: 'User2',
-    username: '@user2',
+    username: 'user2',
     imageURL : 'https://dummyimage.com/vga',
     bio: 'Dummy User',
     introductions: ['5c4fd7f77f9e647a7509836f', '5c4fd7f77f9e647a7509833c', '5c4fd7f77f9e647a75098346'],
@@ -22,7 +22,7 @@ const dummyUsers = [
   },
   {
     name: 'User3',
-    username: '@user3',
+    username: 'user3',
     imageURL : 'https://dummyimage.com/vga',
     bio: 'Dummy User',
     introductions: ['5c4fd7f77f9e647a7509836f', '5c4fd7f77f9e647a7509833c', '5c4fd7f77f9e647a75098346'],
@@ -31,7 +31,7 @@ const dummyUsers = [
   },
   {
     name: 'User4',
-    username: '@user4',
+    username: 'user4',
     imageURL : 'https://dummyimage.com/vga',
     bio: 'Dummy User',
     introductions: ['5c4fd7f77f9e647a7509836f', '5c4fd7f77f9e647a7509833c', '5c4fd7f77f9e647a75098346'],
