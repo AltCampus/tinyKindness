@@ -1,12 +1,11 @@
 const TwitterStrategy = require('passport-twitter').Strategy;
 
-const SECRET = process.env.CLIENT_SECRET;
 const User = require('../models/User');
 
 module.exports = (passport) => {
   passport.use(new TwitterStrategy({
     consumerKey: 'XNAKIb0AUk414HAnFNJ5bAbRE',
-    consumerSecret: SECRET,
+    consumerSecret: '3K7cnarXiMXD3GjaFuTSYE6WQF2yRCjE4RQAFiohCdTCOuXZd5',
     callbackURL: 'http://localhost:8001/api/auth/twitter/callback',
   }, (token, tokenSecret, profile, done) => {
     const username = profile._json.screen_name;

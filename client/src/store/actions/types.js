@@ -1,3 +1,5 @@
 export const GET_USER_DATA = 'GET_USER_DATA';
 
 export const SET_USER_PROFILE = 'SET_USER_PROFILE';
+
+export const SET_TAGS_INTO_REDUX = 'SET_TAGS_INTO_REDUX' 

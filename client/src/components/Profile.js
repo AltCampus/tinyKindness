@@ -28,7 +28,7 @@ class Profile extends Component {
   displayTags = (tags) => {
     return <div>
       {
-        tags.map(tag => <Tags tag={tag}/>)
+        tags.map(tag => <Tags tag={tag} key={tag._id}/>)
       }
     </div>
   }
@@ -43,7 +43,7 @@ class Profile extends Component {
       <main className="profile">
         <div className="profile-wrapper wrapper">
           <button className="btn edit-btn">
-            <i class="fas fa-pencil-alt" />
+            <i className="fas fa-pencil-alt" />
           </button>
           <div className="user-info">
             <h3 className="user-name">{user.name}</h3>

@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 
+// TODO:
+// 1 - Complete Delete Tag Function
+
 class Tags extends Component {
   deleteTag = () => {
-    this.setSate({
+    // this.setSate({
     
-    })
+    // })
   }
 
   render() {
+    // console.log(this.props.tag);
     return (
       <span className="tags">
         <span className="tag">

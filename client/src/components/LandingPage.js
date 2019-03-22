@@ -34,7 +34,7 @@ class LandingPage extends Component {
         this.props.history.push('/user/kind')
       }
     }))
-  }
+}
 
   render() {
 

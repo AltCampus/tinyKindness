@@ -5,12 +5,12 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const socket = require("socket.io");
 const passport = require("passport");
-const webpack = require("webpack");
-const webpackDevMiddleware = require("webpack-dev-middleware");
+// const webpack = require("webpack");
+// const webpackDevMiddleware = require("webpack-dev-middleware");
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo")(session);
 const cors = require("cors");
-const webpackConfig = require("./webpack.config");
+// const webpackConfig = require("./webpack.config");
 
 const app = express();
 // const bootStrap = require('./server/modules/bootStrap');
@@ -19,7 +19,7 @@ const app = express();
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, './server/views'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/dist')));
 
 // connect to mongoDB
 mongoose.connect(
@@ -49,17 +49,17 @@ app.use(
   })
 );
 
-// Webpack config
-if (process.env.NODE_ENV === 'development') {
-  console.log('in webpack hot middleware');
-  const compiler = webpack(webpackConfig);
-  app.use(
-    webpackDevMiddleware(compiler, {
-      noInfo: true,
-      publicPath: webpackConfig.output.publicPath
-    })
-  );
-}
+// // Webpack config
+// if (process.env.NODE_ENV === 'development') {
+//   console.log('in webpack hot middleware');
+//   const compiler = webpack(webpackConfig);
+//   app.use(
+//     webpackDevMiddleware(compiler, {
+//       noInfo: true,
+//       publicPath: webpackConfig.output.publicPath
+//     })
+//   );
+// }
 
 // Initialize passport
 app.use(passport.initialize());

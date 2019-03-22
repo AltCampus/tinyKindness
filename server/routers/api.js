@@ -28,7 +28,7 @@ router.get('/auth/twitter', passport.authenticate('twitter', { session: false })
 
 router.get('/users', auth.isLoggedIn, userController.sendUserData);
 
-router.put('/users', auth.isLoggedIn, userController.updateUser);
+router.put('/users/:id', auth.isLoggedIn, userController.updateUser);
 
 router.get('/profile/:username', auth.isLoggedIn, userController.getUserProfile)
 

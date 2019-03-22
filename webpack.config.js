@@ -1,12 +1,12 @@
 /* eslint-disable */
 var webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'development',
-  devtool: 'inline-source-map',
+  target: "web",
   entry: [
     './client/src/index.js',
   ],
@@ -14,17 +14,19 @@ module.exports = {
     rules: [
       {
         test: /\.js?$/,
-        exclude: /node_modules/,
-        use: { loader: 'babel-loader' },
+        loader: "babel-loader",
+        exclude: /node_modules/
       },
       {
         test: /\.scss$/,
         use: [
-          { loader: MiniCssExtractPlugin.loader },
           {
-            loader: 'css-loader',
+            loader: 'file-loader',
+            options: {
+              name: 'bundle.css',
+            }
           },
-          { loader: 'sass-loader' }
+          { loader: 'sass-loader' },
         ]
       },
       {
@@ -32,7 +34,6 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
-            options: {}
           }
         ]
       },
@@ -42,27 +43,9 @@ module.exports = {
       }
     ]
   },
-  devServer: {
-    contentBase: path.join(__dirname, 'app.js'),
-    compress: true,
-    port: 3001
-  },
   output: {
-    filename: 'bundle.js',
-    path: __dirname + '/dist/bundle/',
-    publicPath: '/static/',
-    chunkFilename: "[name].bundle.js",
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('development')
-      }
-    }),
-    new MiniCssExtractPlugin({
-      filename: "bundle.css",
-    }),
-    new HtmlWebpackPlugin()
-  ]
+    filename: "client.bundle.js",
+    path: path.resolve(__dirname, "dist"),
+    chunkFilename: "[name].client.bundle.js",
+  }
 }

@@ -96,9 +96,12 @@ module.exports = {
       .populate('resources')
       .populate('feedback')
       .exec((err, user) => {
-        res.json({
-          user
-        })
+        if(err || !user) {
+          return res.status(404).json({
+            msg: "Profile not found"
+          });
+        }
+        return res.json({ user });
       })
   }
 };

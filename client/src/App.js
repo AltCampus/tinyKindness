@@ -3,15 +3,22 @@ import "./scss/app.scss";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 
-const KindnessForm = lazy(() => import("./components/KindnessForm"));
-const Profile = lazy(() => import("./components/Profile"));
-const HelperList = lazy(() => import("./components/HelperList"));
-const LandingPage = lazy(() => import("./components/LandingPage"));
+const KindnessForm = lazy(/* webpackChunkName: 'KindnessForm' */  () => import("./components/KindnessForm"));
+const Profile = lazy( /* webpackChunkName: 'Profile' */ () => import("./components/Profile"));
+const HelperList = lazy( /* webpackChunkName: 'HelperList' */ () => import("./components/HelperList"));
+const LandingPage = lazy( /* webpackChunkName: 'LandingPage' */ () => import("./components/LandingPage"));
+
+
+// TODO:
+// 1- Make the user submission successfully.
+// 2- Import Kindness form functionality to Redux.
+// 3- Then Listing of all users.
+// 4- Adding Filters on the Listing user functionality.
 
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+    <BrowserRouter>
         <div>
           <Header />
           <Switch>

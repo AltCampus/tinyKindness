@@ -42,8 +42,10 @@ const authActions = {
         }
     });
 
-  }
-
+  }, 
+  updateUser: (user) => (dispatch) => {
+    fetch(``)
+  } 
 };
 
 export default authActions;
