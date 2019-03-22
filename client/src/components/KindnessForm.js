@@ -6,27 +6,38 @@ const socket = io('http://localhost:8001');
 
 import { connect } from "react-redux";
 import { submitUserData } from "../store/actions/actionCreator.js";
-import kindnessForm from "../store/actions/kindnessForm.actions.js";
-
-// TODO:
-// 1 - On Adding a suggestion make suggestion list empty
-// 2 - Make Redundant code in components
-// 3 - Give a button for adding tags
 
 class KindnessForm extends Component {
 	state = {
-		Introduction: [],
-		Feedback: [],
-		Resources: []
+		introduction: [],
+		feedback: [],
+		resources: [],
+		introductionTags: [],
+		feedbackTags: [],
+		resourcesTags: []
   };
+  
 
-	// Function for adding new Tags or existing tags to the user data
-	addTags = (e, {tag, category}) => {		
-		this.props.dispatch(kindnessForm.addTagsToForm({
-			tag,
-			category
-		}))
-	}
+ 	addIntroductionTags = (tag) => {
+ 		this.setState({
+ 			introductionTags: [...this.state.introductionTags, tag._id ? tag : {
+				 _id : null,
+				 name: tag
+			 }]
+ 		})
+ 	}
+
+ 	addFeedbackTags = (tag) => {
+ 		this.setState({
+ 			feedbackTags: [...this.state.feedbackTags, tag]
+ 		})
+ 	}
+
+ 	addResourcesTags = (tag) => {
+ 		this.setState({
+ 			resourcesTags: [...this.state.resourcesTags, tag]
+ 		})
+ 	}
 
   // do not delete reference for socket
 	handleChange = (e, { category }) => {
@@ -48,19 +59,19 @@ class KindnessForm extends Component {
 			switch(category) {
 				case "introductions": {
 					this.setState({
-						Introduction: [...tags]
+						introduction: [...tags]
 					})
 				}
 				break;
 				case "feedback": {
 					this.setState({
-						Feedback: [...tags]
+						feedback: [...tags]
 					})
 				}
 				break;
 				case "resources": {
 					this.setState({
-						Resources: [...tags]
+						resources: [...tags]
 					})
 				}
 				break;
@@ -70,14 +81,54 @@ class KindnessForm extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
+		this.props.dispatch(submitUserData({
+			username: this.props.user.username,
+			name: this.props.user.name,
+			bio: this.props.user.bio,
+			imageURL: this.props.user.imageURL,
+			introductions: this.state.introductionTags,
+			resources: this.state.resourcesTags,
+			feedback: this.state.feedbackTags
+		}, this.props.user._id))
+	}
+
+	handleIntroductionTag = e => {
+		e.preventDefault();
+		const introdctionInput = document.querySelector('.introduction');
+		this.setState({
+			introductionTags: [...this.state.introductionTags, {
+				name: introdctionInput.value,
+				_id: null
+			}]
+		})
+	}
+
+	handleFeedbackTag = e => {
+		e.preventDefault();
+		const feedbackInput = document.querySelector('.feedback');
+		this.setState({
+			feedbackTags: [...this.state.feedbackTags, {
+				name: feedbackInput.value,
+				_id: null
+			}]
+		})
+	}
+	handleResourcesTag = e => {
+		e.preventDefault();
+		const resourcesInput = document.querySelector('.resources');
+		this.setState({
+			resourcesTags: [...this.state.resourcesTags, {
+				name: resourcesInput.value,
+				_id: null
+			}]
+		})
 	}
 	render() {
-		const { Introduction, Resources, Feedback} = this.state;
-		const {username, name, bio, introductions, feedback, resources} = this.props.user;
-		
-		<div className='proposal center'>
+		const { introduction, feedback, resources, introductionTags, feedbackTags, resourcesTags} = this.state;
+		const {username, name, bio} = this.props.user;
+		return (
+			<div className='proposal center'>
       <Link to={`/users/@${username}`}>Profile</Link>
-			return (
 				<form className='wrapper proposal-form animated bounceIn'>
 					<h2 className='proposal-head'>Add Your Details</h2>
 					<div className='row'>
@@ -113,21 +164,12 @@ class KindnessForm extends Component {
 							/>
 						</div>
 						<div className='proposal-field'>
-							<form onSubmit={(e) => {
-								e.preventDefault();
-								this.addTags(e, {
-									tag: {
-										name: document.querySelector(`.introduction`).value,
-										id: null,
-									},
-									category: 'introductions'
-								})
-							}}>
+							<form onSubmit={this.handleIntroductionTag}>
 								<label htmlFor='first_name'>
 									INTRODUCTIONS: What type of people you know professionally?
 								</label>
 								{
-									introductions && introductions.map(tag => <Tags tag={tag}/>)
+									introductionTags && introductionTags.map(tag => <Tags tag={tag}/>)
 								}
 								<input
 									className='proposal-input introduction'
@@ -139,32 +181,20 @@ class KindnessForm extends Component {
 									})}
 								/>
 								<div className='suggested-tags'>
-									{Introduction &&
-										Introduction.map((tag, index) => (
-											<p onClick={(e) => this.addTags(e,{
-												tag,
-												category: 'introductions'
-											})}className="introduction-tag" key={index}>{tag.name}</p>
+									{introduction &&
+										introduction.map((tag, index) => (
+											<p onClick={() => this.addIntroductionTags(tag)}className="introduction-tag" key={index}>{tag.name}</p>
 										))}
 								</div>
 							</form>
 						</div>
 						<div className='proposal-field '>
-						<form onSubmit={(e) => {
-								e.preventDefault();
-								this.addTags(e, {
-									tag: {
-										name: document.querySelector(`.feedback`).value,
-										id: null,
-									},
-									category: 'feedback'
-								})
-							}}>
+						<form onSubmit={this.handleFeedbackTag}>
 							<label htmlFor='first_name'>
 								FEEDBACK: What are you so good?
 							</label>
 							{
-								feedback && feedback.map(tag => <Tags tag={tag}/>)
+								feedbackTags && feedbackTags.map(tag => <Tags tag={tag}/>)
 							}
 							<input
 								className='proposal-input feedback'
@@ -176,33 +206,21 @@ class KindnessForm extends Component {
 								})}
 							/>
 							<div className='suggested-tags'>
-								{Feedback &&
-									Feedback.map((tag, index) => (
-										<p onClick={(e) => this.addTags(e,{
-											tag,
-											category: 'feedback'
-										})} className="introduction-tag" key={index}>{tag.name}</p>
+								{feedback &&
+									feedback.map((tag, index) => (
+										<p onClick={() => this.addFeedbackTags(tag)} className="introduction-tag" key={index}>{tag.name}</p>
 									))}
 							</div>
 							</form>
 						</div>
 						<div className='proposal-field '>
-						<form onSubmit={(e) => {
-								e.preventDefault();
-								this.addTags(e, {
-									tag: {
-										name: document.querySelector(`.resources`).value,
-										id: null,
-									},
-									category: 'resources'
-								})
-							}}>
+						<form onSubmit={this.handleResourcesTag}>
 							<label htmlFor='first_name'>
 								RESOURCES: What areas do you spend most of your time reading,
 								researching, thinking?{" "}
 							</label>
 							{
-								resources && resources.map(tag => <Tags tag={tag}/>)
+								resourcesTags && resourcesTags.map(tag => <Tags tag={tag}/>)
 							}
 							<input
 								className='proposal-input resources'
@@ -214,14 +232,11 @@ class KindnessForm extends Component {
 								})}
 							/>
 							<div className='suggested-tags'>
-								{Resources &&
-									Resources.map((tag, index) => (
-										<p onClick={(e) => this.addTags(e,{
-											tag,
-											category: 'resources'
-										})} className="introduction-tag" key={index}>{tag.name}</p>
+								{resources &&
+									resources.map((tag, index) => (
+										<p onClick={() => this.addResourcesTags(tag)} className="introduction-tag" key={index}>{tag.name}</p>
 									))}
-							</div>category
+							</div>
 							</form>
 						</div>
 					</div>
@@ -231,6 +246,7 @@ class KindnessForm extends Component {
 					</button>
 					<Link to="/users"><span className="skip-form">Skip</span></Link>
 					</div>
+
 				</form>
 			</div>
 		);
